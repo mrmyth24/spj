@@ -63,26 +63,6 @@ if ($karyawan != null) {
                         </div> -->
 
 
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-5">
-                                    <input class="form-control" type="text" class="form tambahForm" id="nama" name="nama[]" placeholder="Cari Nama Pemohon">
-                                </div>
-                                <div class="col">
-                                    <select id="show-list-pemohon" class="form-control" name="namaKaryawan">
-                                        <option>Tidak ada data</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" type="text" id="jabatan" name="jabatan" placeholder="Jabatan Pemohon" readonly>
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" type="text" id="golongan" name="golongan" placeholder="Golongan Pemohon" readonly>
-                        </div>
-
-
 
 
                         <div class="form-group">
@@ -102,10 +82,14 @@ if ($karyawan != null) {
                         </div>
 
 
+                        <div class="col" id="insert-form">
+                            <input type="hidden" id="jumlah-form" value="1">
+                        </div>
+
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-5">
-                                    <input class="form-control" type="text" class="form tambahForm" id="nama_rombongan" placeholder="Cari Nama Rombongan">
+                                    <input class="form-control" type="text" class="form tambahForm" id="nama_rombongan" placeholder="Nama Peserta">
                                 </div>
                                 <div class="col">
                                     <select id="show-list" class="form-control" name="nama_rombongan[]">
@@ -115,14 +99,10 @@ if ($karyawan != null) {
                             </div>
                         </div>
                         <div class="form-group">
-                            <input class="form-control" type="text" id="jabatan_rombongan" name="jabatan_rombongan[]" placeholder="Jabatan Rombongan" readonly>
+                            <input class="form-control" type="text" id="jabatan_rombongan" name="jabatan_rombongan[]" placeholder="Jabatan Peserta" readonly>
                         </div>
                         <div class="form-group">
-                            <input class="form-control" type="text" id="golongan_rombongan" name="golongan_rombongan[]" placeholder="Golongan Rombongan" readonly>
-                        </div>
-
-                        <div class="col" id="insert-form">
-                            <input type="hidden" id="jumlah-form" value="1">
+                            <input class="form-control" type="text" id="golongan_rombongan" name="golongan_rombongan[]" placeholder="Golongan Peserta" readonly>
                         </div>
 
                         <div class="form-group">
@@ -132,6 +112,7 @@ if ($karyawan != null) {
                         <div class="input_fields_wrap form-group">
 
                         </div>
+
 
                         <div class="form-group">
                             <input type="date" class="form-control" id="tanggal_berangkat" name="tanggal_berangkat" placeholder="Tanggal Keberangkatan">

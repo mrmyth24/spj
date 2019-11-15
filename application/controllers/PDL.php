@@ -60,9 +60,6 @@ class PDL extends CI_Controller
 
         $this->form_validation->set_rules('nomor', 'Nomor', 'required');
         $this->form_validation->set_rules('tanggal', 'Tanggal', 'required');
-        $this->form_validation->set_rules('nama', 'Nama', 'required');
-        $this->form_validation->set_rules('jabatan', 'Jabatan', 'required');
-        $this->form_validation->set_rules('golongan', 'Golongan', 'required');
         $this->form_validation->set_rules('tujuan', 'Tujuan', 'required');
         $this->form_validation->set_rules('jenis_perjalanan', 'Jenis_Perjalanan', 'required');
         $this->form_validation->set_rules('keperluan', 'Keperluan', 'required');
@@ -80,9 +77,6 @@ class PDL extends CI_Controller
         } else {
             $nomor = $this->input->post('nomor');
             $tanggal = $this->input->post('tanggal');
-            $nama = $this->input->post('nama');
-            $jabatan = $this->input->post('jabatan');
-            $golongan = $this->input->post('golongan');
             $tujuan = $this->input->post('tujuan');
             $jenis_perjalanan = $this->input->post('jenis_perjalanan');
             $keperluan = $this->input->post('keperluan');
@@ -93,9 +87,6 @@ class PDL extends CI_Controller
 
             $this->db->set('nomor', $nomor);
             $this->db->set('tanggal', $tanggal);
-            $this->db->set('nama', $nama);
-            $this->db->set('jabatan', $jabatan);
-            $this->db->set('golongan', $golongan);
             $this->db->set('tujuan', $tujuan);
             $this->db->set('jenis_perjalanan', $jenis_perjalanan);
             $this->db->set('keperluan', $keperluan);
@@ -158,9 +149,6 @@ class PDL extends CI_Controller
 
         $this->form_validation->set_rules('nomor', 'Nomor', 'required');
         $this->form_validation->set_rules('tanggal', 'Tanggal', 'required');
-        $this->form_validation->set_rules('namaKaryawan', 'Nama', 'required');
-        $this->form_validation->set_rules('jabatan', 'Jabatan', 'required');
-        $this->form_validation->set_rules('golongan', 'Golongan', 'required');
         $this->form_validation->set_rules('tujuan', 'Tujuan', 'required');
         $this->form_validation->set_rules('jenis_perjalanan', 'Jenis_Perjalanan', 'required');
         $this->form_validation->set_rules('keperluan', 'Keperluan', 'required');
@@ -182,9 +170,6 @@ class PDL extends CI_Controller
 
                 'nomor' => $this->input->post('nomor'),
                 'tanggal' => $this->input->post('tanggal'),
-                'nama' => $this->input->post('namaKaryawan'),
-                'jabatan' => $this->input->post('jabatan'),
-                'golongan' => $this->input->post('golongan'),
                 'tujuan' => $this->input->post('tujuan'),
                 'jenis_perjalanan' => $this->input->post('jenis_perjalanan'),
                 'keperluan' => $this->input->post('keperluan'),

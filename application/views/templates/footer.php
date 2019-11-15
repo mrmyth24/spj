@@ -152,25 +152,6 @@
 			}
 		});
 	});
-	// $('#jabatan_rombongan').on('click', function() {
-
-	// 	const nama_rombongan = $('#nama_rombongan').val();
-
-	// 	$.ajax({
-	// 		url: "<?php // base_url('SPJ/getJabatanRombongan'); 
-						?>",
-	// 		type: 'post',
-	// 		method: "POST",
-	// 		data: {
-	// 			nama_rombongan: nama_rombongan,
-	// 		},
-	// 		async: false,
-	// 		dataType: 'json',
-	// 		success: function(data) {
-	// 			$("#jabatan_rombongan").val(data[0].jabatan);
-	// 		}
-	// 	});
-	// });
 
 	$(document).ready(function() {
 		var max_fields = 20; //maximum input boxes allowed
@@ -251,11 +232,10 @@
 			}
 		});
 
-
 		$('#nama_rombongan').click(function() {
 			$('#show-list').html('<option>Data tidak ditemukan</option>');
 			$('#jabatan_rombongan').val('');
-			$('#golongan_rombongan').val('');
+			$('#golonganRombongan').val('');
 		});
 
 		$('#nama').click(function() {
@@ -302,7 +282,7 @@
 					console.log(response);
 					if (response != null) {
 						$('#jabatan_rombongan').val(response[0]['jabatan']);
-						$('#golongan_rombongan').val(response[0]['golongan']);
+						$('#golonganRombongan').val(response[0]['golongan']);
 						$('#nama_rombongan').val('');
 					} else {
 						console.log('no response');

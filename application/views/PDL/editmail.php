@@ -9,9 +9,6 @@
 
             <?= form_error('nomor', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
             <?= form_error('tanggal', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
-            <?= form_error('nama', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
-            <?= form_error('jabatan', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
-            <?= form_error('golongan', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
             <?= form_error('tujuan', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
             <?= form_error('jenis_perjalanan', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
             <?= form_error('keperluan', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
@@ -33,18 +30,6 @@
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" id="tanggal" name="tanggal" readonly value="<?= date("Y-n-d"); ?>">
-                        </div>
-                        <div class="form-group">
-                            <div class="autocomplete">
-                                <input class=" form-control" id="myInput" type="text" name="nama" value="<?= $pdl['nama'] ?>">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="jabatan" name="jabatan" value="<?= $pdl['jabatan'] ?>">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="golongan" name="golongan" value="<?= $pdl['golongan'] ?>">
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" id="tujuan" name="tujuan" value="<?= $pdl['tujuan'] ?>">
@@ -82,10 +67,6 @@
                             <button class="btn btn-primary add_field_button">Tambah Rombongan</button>
                         </div>
 
-                        <div class="input_fields_wrap form-group">
-                        </div>
-
-
                         <?php $i = 1;
                         $j = 1;
                         foreach ($pdl_rombongan as $dataRombongan) : ?>
@@ -114,7 +95,8 @@
                             <?php $i++ ?>
                         <?php endforeach ?>
 
-
+                        <div class="input_fields_wrap form-group">
+                        </div>
 
 
                         <div class="form-group">
