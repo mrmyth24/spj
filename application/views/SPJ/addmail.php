@@ -56,18 +56,6 @@ if ($karyawan != null) {
                             <input type="text" class="form-control" id="tanggal" name="tanggal" readonly value="<?= $spj['tanggal'] ?>">
                         </div>
                         <div class="form-group">
-                            <div class="autocomplete">
-                                <input class=" form-control" id="myInput" type="text" name="nama" readonly value="<?= $spj['nama'] ?>">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="jabatan" name="jabatan" readonly value="<?= $spj['jabatan'] ?>">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="golongan" name="golongan" readonly value="<?= $spj['golongan'] ?>">
-                        </div>
-                        <div class="form-group">
                             <input type="text" class="form-control" id="tujuan" name="tujuan" readonly value="<?= $spj['tujuan'] ?>">
                         </div>
                         <div class="form-group">
@@ -165,9 +153,6 @@ if ($karyawan != null) {
                         <div class="form-group">
                             <input type="text" class="form-control" id="ditanggung_perusahaan" name="ditanggung_perusahaan" placeholder="Ditanggung Perusahaan" value="<?= $spj['ditanggung_perusahaan'] ?>">
                         </div>
-
-
-
 
                         <div class="form-group">
                             <input type="text" class="form-control" id="lain_lain" name="lain_lain" placeholder="Lain-Lain" value="<?= $spj['lain_lain'] ?>">

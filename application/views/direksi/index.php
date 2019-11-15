@@ -14,8 +14,6 @@
                         <th scope="col">#</th>
                         <th scope="col">Nomor</th>
                         <th scope="col">Tanggal</th>
-                        <th scope="col">nama</th>
-                        <th scope="col">Jabatan</th>
                         <th scope="col">Tujuan</th>
                         <th scope="col">Keperluan</th>
                         <th scope="col">Tanggal Berangkat</th>
@@ -34,8 +32,6 @@
                             <th scope="row"><?= $i; ?></th>
                             <td><?= $p['nomor'] ?></td>
                             <td><?= $p['tanggal'] ?></td>
-                            <td><?= $p['nama'] ?></td>
-                            <td><?= $p['jabatan'] ?></td>
                             <td><?= $p['tujuan'] ?></td>
                             <td><?= $p['keperluan'] ?></td>
                             <td><?= $p['tanggal_berangkat'] ?></td>

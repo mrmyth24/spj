@@ -34,18 +34,6 @@
                             <input type="text" class="form-control" id="tanggal" name="tanggal" readonly value="<?= date("Y-n-d"); ?>">
                         </div>
                         <div class="form-group">
-                            <div class="autocomplete">
-                                <input class=" form-control" id="myInput" type="text" name="nama" readonly value="<?= $pdl['nama'] ?>">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="jabatan" name="jabatan" readonly value="<?= $pdl['jabatan'] ?>">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="golongan" name="golongan" readonly value="<?= $pdl['golongan'] ?>">
-                        </div>
-                        <div class="form-group">
                             <input type="text" class="form-control" id="tujuan" name="tujuan" readonly value="<?= $pdl['tujuan'] ?>">
                         </div>
                         <div class="form-group">

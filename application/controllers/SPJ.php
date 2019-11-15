@@ -38,9 +38,6 @@ class SPJ extends CI_Controller
 
         $this->form_validation->set_rules('nomor', 'Nomor', 'required');
         $this->form_validation->set_rules('tanggal', 'Tanggal', 'required');
-        $this->form_validation->set_rules('nama', 'Nama', 'required');
-        $this->form_validation->set_rules('jabatan', 'Jabatan', 'required');
-        $this->form_validation->set_rules('golongan', 'Golongan', 'required');
         $this->form_validation->set_rules('tujuan', 'Tujuan', 'required');
         $this->form_validation->set_rules('keperluan', 'Keperluan', 'required');
         $this->form_validation->set_rules('tanggal_berangkat', 'Tanggal_Berangkat', 'required');
@@ -69,9 +66,6 @@ class SPJ extends CI_Controller
 
                 'nomor' => $this->input->post('nomor'),
                 'tanggal' => $this->input->post('tanggal'),
-                'nama' => $this->input->post('nama'),
-                'jabatan' => $this->input->post('jabatan'),
-                'golongan' => $this->input->post('golongan'),
                 'tujuan' => $this->input->post('tujuan'),
                 'keperluan' => $this->input->post('keperluan'),
                 'tanggal_berangkat' => $this->input->post('tanggal_berangkat'),

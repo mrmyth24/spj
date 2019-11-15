@@ -16,9 +16,6 @@
                         <th scope="col">#</th>
                         <th scope="col">Nomor</th>
                         <th scope="col">Tanggal</th>
-                        <th scope="col">nama</th>
-                        <th scope="col">Jabatan</th>
-                        <th scope="col">Golongan</th>
                         <th scope="col">Tujuan</th>
                         <th scope="col">Keperluan</th>
                         <th scope="col">Tanggal Berangkat</th>
@@ -36,9 +33,6 @@
                             <th scope="row"><?= $i; ?></th>
                             <td><?= $s['nomor'] ?></td>
                             <td><?= $s['tanggal'] ?></td>
-                            <td><?= $s['nama'] ?></td>
-                            <td><?= $s['jabatan'] ?></td>
-                            <td><?= $s['golongan'] ?></td>
                             <td><?= $s['tujuan'] ?></td>
                             <td><?= $s['keperluan'] ?></td>
                             <td><?= $s['tanggal_berangkat'] ?></td>

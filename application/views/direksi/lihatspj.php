@@ -18,10 +18,18 @@
             <?= form_error('tanggal_kembali', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
             <?= form_error('ditujukan_kepada', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
             <?= form_error('jabatan_penandatanganan', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
+            <?= form_error('nomor_spj', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
+            <?= form_error('tanggal_spj', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
+            <?= form_error('tipe_keperluan', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
+            <?= form_error('jenis_kendaraan', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
+            <?= form_error('no_polis', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
+            <?= form_error('pengemudi', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
+            <?= form_error('ditanggung_perusahaan', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
+            <?= form_error('lain_lain', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
 
             <div class="card">
                 <div class="card-header">
-                    Edit PDL
+                    ACC SPJ
                 </div>
                 <div class="card-body">
                     <blockquote class="blockquote mb-0">
@@ -32,18 +40,6 @@
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" id="tanggal" name="tanggal" readonly value="<?= date("Y-n-d"); ?>">
-                        </div>
-                        <div class="form-group">
-                            <div class="autocomplete">
-                                <input class=" form-control" id="myInput" type="text" name="nama" readonly value="<?= $pdl['nama'] ?>">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="jabatan" name="jabatan" readonly value="<?= $pdl['jabatan'] ?>">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="golongan" name="golongan" readonly value="<?= $pdl['golongan'] ?>">
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" id="tujuan" name="tujuan" readonly value="<?= $pdl['tujuan'] ?>">
@@ -108,10 +104,41 @@
                             </div>
                         </div>
 
-
                         <div class="form-group">
                             <input type="text" class="form-control" id="jabatan_penandatanganan" readonly name="jabatan_penandatanganan" value="<?= $pdl['jabatan_penandatanganan'] ?>">
                         </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" readonly id="nomor_spj" name="nomor_spj" placeholder="Nomor SPJ" value="<?= $pdl['nomor_spj'] ?>">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="date" class="form-control" readonly id="tanggal_spj" name="tanggal_spj" readonly value="<?= date("Y-n-d"); ?>">
+                        </div>
+
+                        <div class="form-group">
+                            <input class="form-control" readonly id="tipe_keperluan" name="tipe_keperluan" value="<?= $pdl['tipe_keperluan'] ?>">
+                        </div>
+
+                        <div class="form-group">
+                            <input class="form-control" readonly id="jenis_kendaraan" name="jenis_kendaraan" value="<?= $pdl['jenis_kendaraan'] ?>">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" readonly class="form-control" id="no_polis" name="no_polis" placeholder="No Polis" value="<?= $pdl['no_polis'] ?>">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" readonly class="form-control" id="pengemudi" name="pengemudi" placeholder="Pengemudi" value="<?= $pdl['pengemudi'] ?>">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" readonly class="form-control" id="ditanggung_perusahaan" name="ditanggung_perusahaan" placeholder="Ditanggung Perusahaan" value="<?= $pdl['ditanggung_perusahaan'] ?>">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" readonly class="form-control" id="lain_lain" name="lain_lain" placeholder="Lain-Lain" value="<?= $pdl['lain_lain'] ?>">
+                        </div>
+
+
 
                         <?php echo form_close() ?>
                     </blockquote>

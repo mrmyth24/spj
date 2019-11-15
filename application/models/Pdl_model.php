@@ -15,7 +15,7 @@ class Pdl_model extends CI_Model
     }
     public function getpdlbyname($nama)
     {
-        $query = "SELECT * FROM `pdl` LEFT JOIN `rombongan_peserta` ON pdl.id = rombongan_peserta.id_pdl WHERE rombongan_peserta.nama_peserta = '$nama' OR pdl.nama = '$nama'";
+        $query = "SELECT * FROM `pdl` LEFT JOIN `rombongan_peserta` ON pdl.id = rombongan_peserta.id_pdl WHERE rombongan_peserta.nama_peserta = '$nama'";
         // $query = "SELECT * FROM `pdl` LEFT JOIN `rombongan_peserta` ON pdl.id = rombongan_peserta.id_pdl WHERE pdl.nama = '$nama'";
         return $this->db->query($query)->result_array();
     }

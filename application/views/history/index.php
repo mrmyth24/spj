@@ -14,10 +14,10 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">nama</th>
                         <th scope="col">Tujuan</th>
                         <th scope="col">No Spj</th>
                         <th scope="col">ٍStatus</th>
+                        <th scope="col">Action</th>
                         <th scope="col">Action</th>
 
 
@@ -28,7 +28,6 @@
                     <?php foreach ($spj as $s) : ?>
                         <tr>
                             <th scope="row"><?= $i; ?></th>
-                            <td><?= $s['nama'] ?></td>
                             <td><?= $s['tujuan'] ?></td>
                             <td><?= $s['nomor_spj'] ?></td>
 
@@ -64,16 +63,26 @@
                             </td>
 
                             <td>
-                                <?php echo form_open_multipart() ?>
-                                <div class="form-group">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="file_surat_masuk" name="file_surat_masuk">
-                                        <label class="custom-file-label" for="file_surat_masuk">Pilih Surat Masuk</label>
+                                <?php if ($s['status'] == '5') : ?>
+
+                                    <?php echo form_open_multipart() ?>
+                                    <div class="form-group">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="file_surat_masuk" name="file_surat_masuk">
+                                            <label class="custom-file-label" for="file_surat_masuk">Pilih Surat Masuk</label>
+                                        </div>
                                     </div>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Add</button>
-                                <?php echo form_close() ?>
+                                    <button type="submit" class="btn btn-primary">Add</button>
+                                    <?php echo form_close() ?>
+
+                                <?php elseif ($s['status'] == '6') : ?>
+
+                                <?php else : ?>
+                                    Penginputan Berkas surat hanya bisa <br> dilakukan setelah di Acc oleh Kabag Sekper
+                                <?php endif; ?>
                             </td>
+
+
 
                         </tr>
                         <?php $i++; ?>
