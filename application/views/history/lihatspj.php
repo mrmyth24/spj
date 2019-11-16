@@ -105,11 +105,11 @@
                             </div>
 
                             <div class="form-group">
-                                <input class="form-control" readonly id="tipe_keperluan" name="tipe_keperluan" value="<?= $pdl['tipe_keperluan'] ?>">
+                                <input class="form-control" readonly id="tipe_keperluan" name="tipe_keperluan" placeholder="Tipe Keperlan" value="<?= $pdl['tipe_keperluan'] ?>">
                             </div>
 
                             <div class="form-group">
-                                <input class="form-control" readonly id="jenis_kendaraan" name="jenis_kendaraan" value="<?= $pdl['jenis_kendaraan'] ?>">
+                                <input class="form-control" readonly id="jenis_kendaraan" name="jenis_kendaraan" value="<?= $pdl['jenis_kendaraan'] ?>" placeholder="Jenis Kendaraan">
                             </div>
 
                             <div class="form-group">

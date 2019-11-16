@@ -65,17 +65,18 @@
                             <td>
                                 <?php if ($s['status'] == '5') : ?>
 
-                                    <?php echo form_open_multipart() ?>
+                                    <?php echo form_open_multipart('history/index') ?>
                                     <div class="form-group">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="file_surat_masuk" name="file_surat_masuk">
-                                            <label class="custom-file-label" for="file_surat_masuk">Pilih Surat Masuk</label>
+                                            <input type="file" class="custom-file-input" id="bukti" name="bukti">
+                                            <label class="custom-file-label" for="bukti">Pilih Surat Masuk</label>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Add</button>
+                                    <button name='submit' type="submit" class="btn btn-primary">Add</button>
                                     <?php echo form_close() ?>
 
                                 <?php elseif ($s['status'] == '6') : ?>
+                                    Bukti perjalanan telah dikirim
 
                                 <?php else : ?>
                                     Penginputan Berkas surat hanya bisa <br> dilakukan setelah di Acc oleh Kabag Sekper
