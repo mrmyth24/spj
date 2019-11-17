@@ -18,7 +18,9 @@ class SPJ extends CI_Controller
 
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-        $data['spj'] = $this->SPJ->getspj();
+        // $data['spj'] = $this->SPJ->getspj();
+
+        $data['spj'] = $this->SPJ->getspjacc();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
@@ -26,6 +28,33 @@ class SPJ extends CI_Controller
         $this->load->view('SPJ/index', $data);
         $this->load->view('templates/footer', $data);
     }
+
+
+    public function downloadmail($id)
+    {
+
+        $this->load->helper('download');
+        $data['spj'] = $this->SPJ->getspjacc($id);
+        if ($data['spj']) {
+            $surat   = file_get_contents('./assets/upload/suratmasuk/' . $data['pdl']['bukti']);
+        }
+        $name   = $data['pdl']['bukti'];
+        force_download($name, $surat);
+    }
+
+    public function viewbuktisurat($id)
+    {
+        $data['pdl'] = $this->PDL->getdetailpdl($id);
+
+        $file = $data['pdl']['bukti'];
+
+        $filename = "./assets/upload/suratmasuk/" . $file;
+        header("Content-type: application/pdf");
+        header("Content-Length: " . filesize($filename));
+        readfile($filename);
+    }
+
+
 
     public function addmail($id)
     {
@@ -149,6 +178,20 @@ class SPJ extends CI_Controller
         $this->db->update('pdl');
 
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Your mail has been sent to Direksi!</div>');
+        redirect('SPJ');
+    }
+
+    public function pdlspjbukti($id)
+    {
+        $data['title'] = 'SPJ';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['spj'] = $this->SPJ->getspj($id);
+
+        $this->db->set('status', '7');
+        $this->db->where('id', $id);
+        $this->db->update('pdl');
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> SPJ Sudah Di ACC!</div>');
         redirect('SPJ');
     }
 }

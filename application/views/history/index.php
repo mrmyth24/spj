@@ -68,8 +68,8 @@
                                     <?php echo form_open_multipart('history/index') ?>
                                     <div class="form-group">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="bukti" name="bukti">
-                                            <label class="custom-file-label" for="bukti">Pilih Surat Masuk</label>
+                                            <input type="file" class="custom-file-input" id="bukti" name="bukti" required>
+                                            <label class="custom-file-label" for="bukti">Bukti Berbentuk pdf</label>
                                         </div>
                                     </div>
                                     <button name='submit' type="submit" class="btn btn-primary">Add</button>

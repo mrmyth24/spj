@@ -106,13 +106,12 @@ if ($karyawan != null) {
                         </div>
 
                         <div class="form-group">
-                            <button class="btn btn-primary add_field_button">Tambah Rombongan</button>
+                            <button class="btn btn-primary add_field_buttons">Tambah Rombongan</button>
                         </div>
 
                         <div class="input_fields_wrap form-group">
 
                         </div>
-
 
                         <div class="form-group">
                             <input type="date" class="form-control" id="tanggal_berangkat" name="tanggal_berangkat" placeholder="Tanggal Keberangkatan">

@@ -45,29 +45,12 @@
                             <input type="text" class="form-control" id="keperluan" name="keperluan" value="<?= $pdl['keperluan'] ?>">
                         </div>
 
-
-                        <!-- <div class="row form-group tambahan">
-
-                            <div class="col"><input type="text" class="form tambahForm" id="nama_rombongan" name="nama_rombongan[]" placeholder="Nama Rombongan">
-                            </div>
-                            <div class="col"><button id="tambahInput" type="button" href="">tambah</button></div>
-                            <div class="col"><button type="button" id="resetInput" href="">reset</button></div>
-
-                            <div class="col" id="insert-form"></div>
-                            <input type="hidden" id="jumlah-form" value="1">
-
-                        </div> -->
-
-
-                        <div class="col" id="insert-form">
-                            <input type="hidden" id="jumlah-form" value="1">
-                        </div>
-
                         <div class="form-group">
                             <button class="btn btn-primary add_field_button">Tambah Rombongan</button>
                         </div>
 
-                        <?php $i = 1;
+                        <?php
+                        $i = 1;
                         $j = 1;
                         foreach ($pdl_rombongan as $dataRombongan) : ?>
                             <div class="form-group">
@@ -90,10 +73,17 @@
                                 <a href="<?= base_url('PDL/deleterombongan/' . $dataRombongan['id']); ?>" class="badge badge-danger" onclick="return confirm('Yakin Hapus?')">delete Rombongan</a>
                             </div>
                             <div class="col" id="insert-form"></div>
-                            <input type="hidden" id="jumlah-form" value="<?php echo $j += 1; ?>">
 
                             <?php $i++ ?>
                         <?php endforeach ?>
+
+                        <div class="col" id="insert-form">
+                            <input type="hidden" id="id_pdl" value="<?= $pdl['id'] ?>">
+                        </div>
+
+                        <div class="col" id="insert-form">
+                            <input type="hidden" id="jumlah-form" value="<?= $i ?>">
+                        </div>
 
                         <div class="input_fields_wrap form-group">
                         </div>

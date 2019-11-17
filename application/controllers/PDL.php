@@ -103,30 +103,7 @@ class PDL extends CI_Controller
             $jabatanRombongan = $this->input->post('jabatan_rombongan');
             $golonganRombongan = $this->input->post('golongan_rombongan');
 
-            foreach ($namaRombongan as $index => $data) {
-                // $this->db->set('nama_peserta', $data);
-                // $this->db->set('jabatan_rombongan', $jabatanRombongan[$index]);
-                // $this->db->set('golongan_rombongan', $golonganRombongan[$index]);
 
-                // $this->db->update('rombongan_peserta');
-
-                // $query = $this->db->get_where('rombongan_peserta', array('nama_peserta' => 'kurniadi'));
-                // $idRombongan = $this->db->query($query)->result_array();
-
-                $datas = array(
-                    'id_pdl' => $id,
-                    'nama_peserta' => $data,
-                    'jabatan_rombongan' => $jabatanRombongan[$index],
-                    'golongan_rombongan' => $golonganRombongan[$index]
-                );
-                $this->db->where('id_pdl', $id);
-                $this->db->update('rombongan_peserta', $datas);
-
-                // $query = "UPDATE rombongan_peserta
-                // SET nama_peserta = '.$data.', jabatan_rombongan = '.$jabatanRombongan[$index].', golongan_rombongan = '.$golonganRombongan[$index].'
-                // WHERE id_pdl = '.$id.'";
-                // $this->db->query($query);
-            }
 
             if ($this->db->affected_rows() > 0) {
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Your mail has been update!</div>');
@@ -136,8 +113,6 @@ class PDL extends CI_Controller
             redirect('PDL');
         }
     }
-
-
 
     public function addmail()
     {
@@ -267,5 +242,20 @@ class PDL extends CI_Controller
         } else {
             echo 'null';
         }
+    }
+
+    public function tambahRombongan()
+    {
+        $id = $this->input->post('id');
+        $nama = $this->input->post('nama');
+        $jabatan = $this->input->post('jabatan');
+        $golongan = $this->input->post('golongan');
+
+        $this->db->set('id_pdl', $id);
+        $this->db->set('nama_peserta', $nama);
+        $this->db->set('jabatan_rombongan', $jabatan);
+        $this->db->set('golongan_rombongan', $golongan);
+
+        $this->db->insert('rombongan_peserta');
     }
 }

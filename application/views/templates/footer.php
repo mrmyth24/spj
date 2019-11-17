@@ -157,6 +157,7 @@
 		var max_fields = 20; //maximum input boxes allowed
 		var wrapper = $(".input_fields_wrap"); //Fields wrapper
 		var add_button = $(".add_field_button"); //Add button ID
+		var add_buttonadd = $(".add_field_buttons"); //Add button ID
 		var x = 1; //initlal text box count
 
 		$(add_button).click(function(e) { //on add input button click
@@ -167,15 +168,28 @@
 			e.preventDefault();
 			if (x < max_fields) { //max input box allowed
 				x++; //text box increment
-				/*
-				1 baris 2 inputan
-				<div class="form-group"><div class="row"><div class="col-5"><input class="form-control" type="text" class="form tambahForm" id="nama_rombongan" name="nama_rombongan[]" placeholder="Cari Nama Rombongan"></div><div class="col"><select id="show-list" class="form-control" name="jabatan_rombongan[]"><option>Tidak ada data</option></select></div></div></div>
-				*/
 
-				$(wrapper).append('<div><div class="form-group"><div class="row"><div class="col-5"><input id="tambahForm' + nextform + '" class="form-control tambahForm mt-2" type="text" class="form tambahForm"  placeholder="Cari Nama Rombongan"></div><div class="col mt-2"><select id="show-list' + nextform + '" class="show-list form-control" name="nama_rombongan[]"><option>Tidak ada data</option></select></div></div></div><div class="form-group"><input id="jabatanRombongan' + nextform + '" type="text" class="form-control" placeholder="Jabatan Rombongan" name="jabatan_rombongan[]" readonly></div><div class="form-group"><input id="golonganRombongan' + nextform + '" type="text" placeholder="Golongan Rombongan" class="form-control" name="golongan_rombongan[]" readonly></div><a href="#" class="remove_field ml-1" style="color:red; font-size:14px">Hapus Rombongan</a></div>'); //add input box
 
-				// asli $(wrapper).append('<div> <div class="form-group"><input id="tambahForm' + nextform + '" class="form-control tambahForm mt-2" placeholder="Nama Rombongan" type="text" name="nama_rombongan[]"></div><div class="form-group"><input type="text" class="form-control" placeholder="Jabatan Rombongan" name="jabatan_rombongan[]"></div><div class="form-group"><input type="text" placeholder="Golongan Rombongan" class="form-control" name="golongan_rombongan[]"></div><a href="#" class="remove_field ml-1" style="color:red; font-size:14px">Hapus Rombongan</a></div>'); //add input box
-				// edit $(wrapper).append('<div><div class="form-group"><div class="row"><div class="col-5"><input class="form-control" type="text" class="form tambahForm" id="nama_rombongan" name="nama_rombongan[]" placeholder="Cari Nama Rombongan"></div><div class="col"><select id="show-list" class="form-control" name="jabatan_rombongan[]"><option>Tidak ada data</option></select></div></div></div><div class="form-group"><input type="text" class="form-control" placeholder="Jabatan Rombongan" name="jabatan_rombongan[]"></div><div class="form-group"><input type="text" placeholder="Golongan Rombongan" class="form-control" name="golongan_rombongan[]"></div><a href="#" class="remove_field ml-1" style="color:red; font-size:14px">Hapus Rombongan</a></div>'); //add input box
+				$(wrapper).append('<div><div class="form-group"><div class="row"><div class="col-5"><input id="tambahForm' + nextform + '" class="form-control tambahForm mt-2" type="text" class="form tambahForm"  placeholder="Cari Nama Rombongan"></div><div class="col mt-2"><select id="show-list' + nextform + '" class="show-list form-control" name="nama_rombongan[]"><option>Tidak ada data</option></select></div></div></div><div class="form-group"><input id="jabatanRombongan' + nextform + '" type="text" class="form-control" placeholder="Jabatan Rombongan" name="jabatan_rombongan[]" readonly></div><div class="form-group"><input id="golonganRombongan' + nextform + '" type="text" placeholder="Golongan Rombongan" class="form-control" name="golongan_rombongan[]" readonly></div><a href="#" class="remove_field ml-1" style="color:red; font-size:14px">Hapus Rombongan</a><a id="submitRombongan' + nextform + '" class="submitRombongan" href="#" style="color:blue; font-size:14px">Submit</a></div>'); //add input box
+
+			}
+
+			$("#jumlah-form").val(nextform);
+
+		});
+
+		$(add_buttonadd).click(function(e) { //on add input button click
+
+			var jumlah = parseInt($("#jumlah-form").val()); // Ambil jumlah data form pada textbox jumlah-form
+			var nextform = jumlah + 1; // Tambah 1 untuk jumlah form nya
+
+			e.preventDefault();
+			if (x < max_fields) { //max input box allowed
+				x++; //text box increment
+
+
+				$(wrapper).append('<div><div class="form-group"><div class="row"><div class="col-5"><input id="tambahForm' + nextform + '" class="form-control tambahForm mt-2" type="text" class="form tambahForm"  placeholder="Cari Nama Rombongan"></div><div class="col mt-2"><select id="show-list' + nextform + '" class="show-list form-control" name="nama_rombongan[]"><option>Tidak ada data</option></select></div></div></div><div class="form-group"><input id="jabatanRombongan' + nextform + '" type="text" class="form-control" placeholder="Jabatan Rombongan" name="jabatan_rombongan[]" readonly></div><div class="form-group"><input id="golonganRombongan' + nextform + '" type="text" placeholder="Golongan Rombongan" class="form-control" name="golongan_rombongan[]" readonly></div></div>'); //add input box
+
 			}
 
 			$("#jumlah-form").val(nextform);
@@ -282,7 +296,7 @@
 					console.log(response);
 					if (response != null) {
 						$('#jabatan_rombongan').val(response[0]['jabatan']);
-						$('#golonganRombongan').val(response[0]['golongan']);
+						$('#golongan_rombongan').val(response[0]['golongan']);
 						$('#nama_rombongan').val('');
 					} else {
 						console.log('no response');
@@ -338,7 +352,39 @@
 			// autocomplete(document.getElementById(id), count);
 			lakukanAjaxAmbilData(id, jumlah);
 		});
+
+		$(document).on('click', '.submitRombongan', function() {
+
+			var jumlah = parseInt($("#jumlah-form").val()); // Ambil jumlah data form pada textbox jumlah-form
+			var nextform = jumlah + 1;
+			var id = this.id
+			// autocomplete(document.getElementById(id), count);
+			lakukanAjaxInsertDataRombongan(id, jumlah);
+
+		});
 	});
+
+	function lakukanAjaxInsertDataRombongan(element, number) {
+		var id = $('#id_pdl').val();
+		var nama = $("#show-list" + number).val();
+		var jabatan = $("#jabatanRombongan" + number).val();
+		var golongan = $("#golonganRombongan" + number).val();
+
+		$.ajax({
+			url: "<?= base_url('pdl/tambahRombongan'); ?>",
+			method: 'post',
+			data: {
+				id: id,
+				nama: nama,
+				jabatan: jabatan,
+				golongan: golongan
+			},
+			success: function(response) {
+				console.log('sukses menambah rombongan');
+			}
+		});
+
+	}
 
 	// autocomplete data rombongan
 

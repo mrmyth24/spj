@@ -5,7 +5,12 @@ class Spj_model extends CI_Model
 {
     public function getspj()
     {
-        $query = "SELECT * FROM pdl WHERE status = 3 ";
+        $query = "SELECT * FROM pdl WHERE status = 3";
+        return $this->db->query($query)->result_array();
+    }
+    public function getspjacc()
+    {
+        $query = "SELECT * FROM pdl WHERE status = 3 OR status = 6";
         return $this->db->query($query)->result_array();
     }
     public function getspjbyname($nama)
@@ -55,6 +60,11 @@ class Spj_model extends CI_Model
     public function getspjdireksi()
     {
         $query = "SELECT * FROM pdl WHERE status = 4 ";
+        return $this->db->query($query)->result_array();
+    }
+    public function getspp()
+    {
+        $query = "SELECT * FROM pdl WHERE status = 7 ";
         return $this->db->query($query)->result_array();
     }
     public function getspjdireksisee()

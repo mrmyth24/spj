@@ -15,11 +15,9 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nomor</th>
-                        <th scope="col">Tanggal</th>
+                        <th scope="col">Tanggal Dibuat</th>
                         <th scope="col">Tujuan</th>
                         <th scope="col">Keperluan</th>
-                        <th scope="col">Tanggal Berangkat</th>
-                        <th scope="col">Tanggal Kembali</th>
                         <th scope="col">Action</th>
                         <th scope="col">Action</th>
 
@@ -35,14 +33,31 @@
                             <td><?= $s['tanggal'] ?></td>
                             <td><?= $s['tujuan'] ?></td>
                             <td><?= $s['keperluan'] ?></td>
-                            <td><?= $s['tanggal_berangkat'] ?></td>
-                            <td><?= $s['tanggal_kembali'] ?></td>
+
+
                             <td>
-                                <a href="<?= base_url('SPJ/addmail/') . $s['id']; ?>" class="btn btn-info btn-circle">SPJ</a>
+                                <?php if ($s['status'] == '6') : ?>
+                                    <a href="<?= base_url('SPJ/viewbuktisurat/' . $s['id']); ?>" class="badge badge-secondary">Lihat Bukti Perjalanan </a>
+                                <?php else : ?>
+                                    Berkas Belum Diupload
+                                <?php endif; ?>
                             </td>
                             <td>
-                                <a href="<?= base_url('SPJ/pdlspj/' . $s['id']); ?>" class="btn btn-success btn-circle">
-                                    <i class="fas fa-check"></i>
+                                <a href="<?= base_url('SPJ/addmail/') . $s['id']; ?>" class="btn btn-info btn-circle">SPJ</a>
+
+                                <?php if ($s['status'] == '6') : ?>
+                                    <a href="<?= base_url('SPJ/pdlspjbukti/' . $s['id']); ?>" class="btn btn-success btn-circle">
+                                        <i class="fas fa-check"></i>
+                                    <?php endif; ?>
+
+                                    <?php if ($s['status'] == '3') : ?>
+                                        <a href="<?= base_url('SPJ/pdlspj/' . $s['id']); ?>" class="btn btn-success btn-circle">
+                                            <i class="fas fa-check"></i>
+                                        <?php endif; ?>
+
+
+
+
                             </td>
 
                         </tr>
