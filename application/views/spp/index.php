@@ -35,6 +35,7 @@
                             <td><?= $p['tanggal_berangkat'] ?></td>
                             <td><?= $p['tanggal_kembali'] ?></td>
                             <td>
+                                <a href="<?= base_url('SPP/addmail/') . $p['id']; ?>" class="btn btn-info btn-circle">SPP</a>
                                 <a href="<?= base_url('SPP/laporan_spp/') . $p['id']; ?>" class=" badge badge-secondary" target="_blank">Download Surat SPP</a>
                             </td>
 

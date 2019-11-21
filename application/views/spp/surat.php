@@ -1,137 +1,104 @@
-<!DOCTYPE html>
-<html lang="en">
+<table style="margin: 0; border-collapse: collapse; padding: 0; border-spacing: 0;" border="1" cellpadding="0" cellspacing="0">
+    <tbody>
+        <tr>
+            <td width="48%">
+                <p>Kepada Yth &nbsp; &nbsp; : <strong>Kabag Sekretaris Perusahaan</strong><br>
+                    Dari &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : <strong>Urs. Sekretariat</strong><br>
+                    Nomor SPP &nbsp; &nbsp; :&nbsp;<br>
+                    Tanggal &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; :&nbsp;</Dari>
+            </td>
+            <td width="19%">
+                <p>SURAT PERMINTAAN PEMBAYARAN (SPP)</p>
+            </td>
+            <td valign="top" width="37.32057416267943%">
+                <p>Dokumen Pendukung : <br>
+                    No. &amp; tg. Kwitansi &nbsp; &nbsp; &nbsp;: <br>
+                    No. &amp; tg. Faktur &nbsp; &nbsp; &nbsp; : <br>
+                    No. &amp; tg. OPL.SPK &nbsp; &nbsp; : <br>
+                    No. &amp; tg. Srt.Perj &nbsp; &nbsp; &nbsp;:
+                </p>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+<br>
 
-<body>
-    <p skip="true" style="text-align: left;"><span style="font-size: 14px;">PT. PERKEBUNAN NUSANTARA V
-            <br>KANTOR PUSAT PEKANBARU
-        </span></p>
-    <table border="1" style="width: 100%;">
-        <tbody>
-            <tr>
-                <td style="width: 30.2926%;">Kepada Yth &nbsp; : <b>Kabag Sekretaris Perusahaan</b>
-                    <br>Dari : <b>Urs. Sekretariat</b>
-                    <br>Nomor SPP :
-                    <br>Tanggal &nbsp; &nbsp; &nbsp; &nbsp; :
-                </td>
-                <td style="width: 41.8244%; vertical-align: top;">
-                    <br>
-                    <div style="text-align: center;">SURAT</div>
-                    <div style="text-align: center;">PERMINTAAN PEMBAYARAN</div>
-                    <div style="text-align: center;">(SPP)</div>
-                </td>
-                <td style="width: 27.5387%; vertical-align: top;">Dokumen Pendukung :
-                    <br>No. &amp; tg. Kwitansi :
-                    <br>No. &amp; tg. Faktur :
-                    <br>No. &amp; tg. OPL.SPK :
-                    <br>No. &amp; tg. Srt.Perj :
-                    <br>
-                    <br>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <p>
-        <br>
-    </p>
-    <table border="1" style="width: 100%;">
-        <tbody>
-            <tr>
-                <td style="width: 20.0000%;">
-                    <div data-empty="true" style="text-align: center;">Dibayarkan Kepada</div>
-                </td>
-                <td style="width: 8%;">
-                    <div data-empty="true" style="text-align: center;">Rekening</div>
-                </td>
-                <td style="width: 41.4802%;">
-                    <div data-empty="true" style="text-align: center;">Uraian</div>
-                </td>
-                <td style="width: 11.3597%;">
-                    <div data-empty="true" style="text-align: center;">Jumlah Rp</div>
-                </td>
-                <td style="width: 12.3924%;">
-                    <div data-empty="true" style="text-align: center;">Tanda tangan</div>
-                </td>
-            </tr>
-            <tr>
-                <td style="width: 20.0000%;">
-                    <?= $pdl_rombongan[0]['nama_peserta'] ?>
-                </td>
-                <td style="width: 8%;">
-                    <br>
-                </td>
-                <td style="width: 41.4802%;">
-                    Biaya perjalanan dinas ke <?= $spj['tujuan'] ?>
-                    Sesuai rincian sebagai berikut:
-                    <br>
-                    <?php $i = 0;
-                    foreach ($pdl_rombongan as $p) : ?>
-
-                        <b><?= $p['nama_peserta'] ?></b>
-                        <br>
-                        <?= $spj['tanggal_berangkat'] ?> s/d <?= $spj['tanggal_kembali'] ?>
-                        <br>
-                        <?= $spj['nomor_spj'] ?>
-                        <br>
-                        Lumpsum 1x Rp.
-                        <br>
-                        Jumlah
-                        <br>
-
-                    <?php endforeach ?>
-
-                </td>
-                <td style="width: 11.3597%;">
-                    <br>
-                </td>
-                <td style="width: 12.3924%;">
-                    <br>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3" style="width: 76.2478%;">
-                    <div data-empty="true" style="text-align: center;">Jumlah di bayar</div>
-                    <div style="text-align: center;"></div>
-                </td>
-                <td style="width: 11.3597%;">
-                    <br>
-                </td>
-                <td style="width: 12.3924%;">
-                    <br>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="5" style="width: 99.8279%;">&nbsp;Terbilang :
-                    <br>
-                    <br>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <p>An. SPP</p>
-    <p>
-        <br>
-    </p>
-    <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Disetujui oleh &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Diajukan Oleh</p>
-    <p>
-        <br>
-    </p>
-    <p>
-        <br>
-    </p>
-    <p>
-        <br>
-    </p>
-    <p>
-        <br>
-    </p>
-    <p>Jujur, Tulus, Ikhlas</p>
-</body>
-
-</html>
+<table align="left" border="1" cellpadding="0" cellspacing="0" width="100%">
+    <tbody>
+        <tr>
+            <td width="16.74641148325359%">
+                <p>Dibayarkan &nbsp; &nbsp; Kepada&nbsp;</p>
+            </td>
+            <td width="11.961722488038278%">
+                <p>Rekening</p>
+            </td>
+            <td width="44.65709728867623%">
+                <p>URAIAN</p>
+            </td>
+            <td width="16.74641148325359%">
+                <p>Jumlah&nbsp;</p>
+                <p>RP</p>
+            </td>
+            <td width="9.88835725677831%">
+                <p>Tanda &nbsp;Tangan</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" width="16.74641148325359%">
+                <p>&nbsp;</p>
+            </td>
+            <td width="11.961722488038278%">
+                <p>&nbsp;</p>
+            </td>
+            <td valign="top" width="44.65709728867623%">
+                <p>Biaya Perjalanan Dinas ke&nbsp;</p>
+                <p>Sesuai rincian sebagai berikut :</p>
+                <p>Tgl.&nbsp;</p>
+                <p>SPJ No :</p>
+                <p>&nbsp;</p>
+                <p>Lupsum &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;1 x Rp. &nbsp; &nbsp; X &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Rp. &nbsp;Sekian</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Rp&nbsp;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Rp. total</p>
+            </td>
+            <td valign="top" width="16.74641148325359%">
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>Rp. Total</p>
+            </td>
+            <td valign="top" width="9.88835725677831%">
+                <p>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" valign="top" width="73.3652312599681%">
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Jumlah Dibayar</p>
+            </td>
+            <td valign="top" width="16.74641148325359%">
+                <p><strong>Rp.&nbsp;</strong></p>
+            </td>
+            <td valign="top" width="9.88835725677831%">
+                <p>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="5" valign="top" width="100%">
+                <p>Terbilang &nbsp; &nbsp; &nbsp; &nbsp;: &nbsp; &nbsp;</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    <br>
+</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</p>
+<p style="margin-top:14cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:-49.65pt;line-height:107%;font-size:15px;font-family:&quot;Calibri&quot;,sans-serif;"><span style="font-size:16px;line-height:107%;font-family:&quot;Times New Roman&quot;,serif;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;An. SPP</span></p>
+<p style="margin:0cm;margin-bottom:.0001pt;font-size:15px;font-family:&quot;Calibri&quot;,sans-serif;"><span style="font-family:&quot;Times New Roman&quot;,serif;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Disetujui Oleh</span><span style="font-size:16px;font-family:&quot;Times New Roman&quot;,serif;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span><span style="font-family:&quot;Times New Roman&quot;,serif;">Diajukan Oleh</span></p>
+<p style="margin:0cm;margin-bottom:.0001pt;font-size:15px;font-family:&quot;Calibri&quot;,sans-serif;"><span style="font-family:&quot;Times New Roman&quot;,serif;">&nbsp;</span></p>
+<p style="margin:0cm;margin-bottom:.0001pt;font-size:15px;font-family:&quot;Calibri&quot;,sans-serif;"><span style="font-family:&quot;Times New Roman&quot;,serif;">&nbsp;</span></p>
+<p style="margin:0cm;margin-bottom:.0001pt;font-size:15px;font-family:&quot;Calibri&quot;,sans-serif;"><span style="font-size:16px;font-family:&quot;Times New Roman&quot;,serif;">&nbsp;</span></p>
+<p style="margin:0cm;margin-bottom:.0001pt;font-size:15px;font-family:&quot;Calibri&quot;,sans-serif;"><span style="font-family:&quot;Times New Roman&quot;,serif;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Kabag</span><span style="font-size:16px;font-family:&quot;Times New Roman&quot;,serif;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span><span style="font-family:&quot;Times New Roman&quot;,serif;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Ka. Sub Bag Sekretariat &amp; protokoler &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
