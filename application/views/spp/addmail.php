@@ -55,16 +55,16 @@ if ($karyawan != null) {
                         <!--" enctype="multipart/form-data">-->
                         <?php echo form_open_multipart() ?>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="nomor" name="nomor" readonly value="<?= $spj['nomor'] ?>">
+                            <input type="text" class="form-control" id="nomor" name="nomor" readonly value="<?= $spj[0]['nomor'] ?>">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="tanggal" name="tanggal" readonly value="<?= $spj['tanggal'] ?>">
+                            <input type="text" class="form-control" id="tanggal" name="tanggal" readonly value="<?= $spj[0]['tanggal'] ?>">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="tujuan" name="tujuan" readonly value="<?= $spj['tujuan'] ?>">
+                            <input type="text" class="form-control" id="tujuan" name="tujuan" readonly value="<?= $spj[0]['tujuan'] ?>">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="keperluan" name="keperluan" readonly value="<?= $spj['keperluan'] ?>">
+                            <input type="text" class="form-control" id="keperluan" name="keperluan" readonly value="<?= $spj[0]['keperluan'] ?>">
                         </div>
 
 
@@ -82,7 +82,7 @@ if ($karyawan != null) {
 
                         <?php $i = 1;
                         $j = 1;
-                        foreach ($pdl_rombongan as $dataRombongan) : ?>
+                        foreach ($spj as $dataRombongan) : ?>
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-5">
@@ -99,6 +99,27 @@ if ($karyawan != null) {
                                 <input class="form-control" type="text" id="<?php echo ($i == 1 ? 'jabatan_rombongan' : 'jabatanRombongan' . $i) ?>" name="jabatan_rombongan[]" placeholder="Jabatan Rombongan" readonly value="<?= $dataRombongan['jabatan_rombongan'] ?>">
                             </div>
                             <div class="form-group">
+                                <input class="form-control" type="text" name="biaya[]" readonly value="<?= $dataRombongan['uang_makan'] ?>">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="biaya[]" readonly value="<?= $dataRombongan['makan_pagi'] ?>">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="biaya[]" readonly value="<?= $dataRombongan['makan_siang'] ?>">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="biaya[]" readonly value="<?= $dataRombongan['makan_malam'] ?>">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="biaya[]" readonly value="<?= $dataRombongan['uang_saku'] ?>">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="biaya[]" readonly value="<?= $dataRombongan['uang_cucian'] ?>">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="biaya[]" readonly value="<?= $dataRombongan['penginapan'] ?>">
+                            </div>
+                            <div class="form-group">
                                 <input class="form-control" type="text" id="golonganRombongan<?php echo ($i >= 2 ?  $i : null) ?>" name="golongan_rombongan[]" placeholder="Golongan Rombongan" readonly value="<?= $dataRombongan['golongan_rombongan'] ?>">
                             </div>
                             <div class="col" id="insert-form"></div>
@@ -111,23 +132,23 @@ if ($karyawan != null) {
 
 
                         <div class="form-group">
-                            <input type="date" class="form-control" id="tanggal_berangkat" name="tanggal_berangkat" readonly value="<?= $spj['tanggal_berangkat'] ?>">
+                            <input type="date" class="form-control" id="tanggal_berangkat" name="tanggal_berangkat" readonly value="<?= $spj[0]['tanggal_berangkat'] ?>">
                         </div>
                         <div class="form-group">
-                            <input type="date" class="form-control" id="tanggal_kembali" name="tanggal_kembali" readonly value="<?= $spj['tanggal_kembali'] ?>">
+                            <input type="date" class="form-control" id="tanggal_kembali" name="tanggal_kembali" readonly value="<?= $spj[0]['tanggal_kembali'] ?>">
                         </div>
 
                         <div class="form-group">
                             <div class="autocomplete">
-                                <input class=" form-control" id="myInput2" type="text" name="ditujukan_kepada" readonly value="<?= $spj['ditujukan_kepada'] ?>">
+                                <input class=" form-control" id="myInput2" type="text" name="ditujukan_kepada" readonly value="<?= $spj[0]['ditujukan_kepada'] ?>">
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="jabatan_penandatanganan" name="jabatan_penandatanganan" readonly value="<?= $spj['jabatan_penandatanganan'] ?>">
+                            <input type="text" class="form-control" id="jabatan_penandatanganan" name="jabatan_penandatanganan" readonly value="<?= $spj[0]['jabatan_penandatanganan'] ?>">
                         </div>
 
                         <div class="form-group">
-                            <input type="text" readonly class="form-control" id="nomor_spj" name="nomor_spj" placeholder="Nomor SPJ" value="<?= $spj['nomor_spj'] ?>">
+                            <input type="text" readonly class="form-control" id="nomor_spj" name="nomor_spj" placeholder="Nomor SPJ" value="<?= $spj[0]['nomor_spj'] ?>">
                         </div>
 
                         <div class="form-group">
@@ -135,42 +156,42 @@ if ($karyawan != null) {
                         </div>
 
                         <div class="form-group">
-                            <input class="form-control" readonly id="tipe_keperluan" name="tipe_keperluan" value="<?= $spj['tipe_keperluan'] ?>">
+                            <input class="form-control" readonly id="tipe_keperluan" name="tipe_keperluan" value="<?= $spj[0]['tipe_keperluan'] ?>">
                             </input>
                         </div>
 
                         <div class="form-group">
-                            <input class="form-control" readonly id="jenis_kendaraan" name="jenis_kendaraan" value="<?= $spj['jenis_kendaraan'] ?>">
+                            <input class="form-control" readonly id="jenis_kendaraan" name="jenis_kendaraan" value="<?= $spj[0]['jenis_kendaraan'] ?>">
                             </input>
                         </div>
 
                         <div class="form-group">
-                            <input type="text" readonly class="form-control" id="no_polis" name="no_polis" placeholder="No Polis" value="<?= $spj['no_polis'] ?>">
+                            <input type="text" readonly class="form-control" id="no_polis" name="no_polis" placeholder="No Polis" value="<?= $spj[0]['no_polis'] ?>">
                         </div>
                         <div class="form-group">
-                            <input type="text" readonly class="form-control" id="pengemudi" name="pengemudi" placeholder="Pengemudi" value="<?= $spj['pengemudi'] ?>">
+                            <input type="text" readonly class="form-control" id="pengemudi" name="pengemudi" placeholder="Pengemudi" value="<?= $spj[0]['pengemudi'] ?>">
                         </div>
                         <div class="form-group">
-                            <input type="text" readonly class="form-control" id="ditanggung_perusahaan" name="ditanggung_perusahaan" placeholder="Ditanggung Perusahaan" value="<?= $spj['ditanggung_perusahaan'] ?>">
+                            <input type="text" readonly class="form-control" id="ditanggung_perusahaan" name="ditanggung_perusahaan" placeholder="Ditanggung Perusahaan" value="<?= $spj[0]['ditanggung_perusahaan'] ?>">
                         </div>
 
                         <div class="form-group">
-                            <input type="text" readonly class="form-control" id="lain_lain" name="lain_lain" placeholder="Lain-Lain" value="<?= $spj['lain_lain'] ?>">
+                            <input type="text" readonly class="form-control" id="lain_lain" name="lain_lain" placeholder="Lain-Lain" value="<?= $spj[0]['lain_lain'] ?>">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="nomor_spp" name="nomor_spp" placeholder="Nomor SPP" value="<?= $spj['nomor_spp'] ?>">
+                            <input type="text" class="form-control" id="nomor_spp" name="nomor_spp" placeholder="Nomor SPP" value="<?= $spj[0]['nomor_spp'] ?>">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="disetujui_spp" name="disetujui_spp" placeholder="Disetujui Oleh" value="<?= $spj['disetujui_spp'] ?>">
+                            <input type="text" class="form-control" id="disetujui_spp" name="disetujui_spp" placeholder="Disetujui Oleh" value="<?= $spj[0]['disetujui_spp'] ?>">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="jabatan_penyetuju" name="jabatan_penyetuju" placeholder="Jabatan Penyetuju" value="<?= $spj['jabatan_penyetuju'] ?>">
+                            <input type="text" class="form-control" id="jabatan_penyetuju" name="jabatan_penyetuju" placeholder="Jabatan Penyetuju" value="<?= $spj[0]['jabatan_penyetuju'] ?>">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="diajukan_spp" name="diajukan_spp" placeholder="Diajukan Oleh" value="<?= $spj['diajukan_spp'] ?>">
+                            <input type="text" class="form-control" id="diajukan_spp" name="diajukan_spp" placeholder="Diajukan Oleh" value="<?= $spj[0]['diajukan_spp'] ?>">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="jabatan_spp" name="jabatan_spp" placeholder="Jabatan Pengaju" value="<?= $spj['jabatan_spp'] ?>">
+                            <input type="text" class="form-control" id="jabatan_spp" name="jabatan_spp" placeholder="Jabatan Pengaju" value="<?= $spj[0]['jabatan_spp'] ?>">
                         </div>
 
 

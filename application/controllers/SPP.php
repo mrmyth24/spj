@@ -52,17 +52,23 @@ class SPP extends CI_Controller
 
         $data['title'] = 'SPJ';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['spj'] = $this->SPJ->getdetailspj($id);
+        $data['spj'] = $this->SPJ->getsppdata($id);
         $data['pdl_rombongan'] = $this->PDL->getRombongan($id);
         $data['karyawan'] = $this->SPJ->getkaryawan();
 
+        $biaya = $this->input->post('biaya');
+
+        $idRombongan = array();
+
+        foreach ($data['pdl_rombongan'] as $dataRombongan) {
+            array_push($idRombongan, $dataRombongan['id']);
+        }
 
         $this->form_validation->set_rules('nomor_spp', 'Nomor SPP', 'required');
         $this->form_validation->set_rules('disetujui_spp', 'Disetujui Oleh', 'required');
         $this->form_validation->set_rules('jabatan_penyetuju', 'Jabatan Penyetuju', 'required');
         $this->form_validation->set_rules('diajukan_spp', 'Diajukan Oleh', 'required');
         $this->form_validation->set_rules('jabatan_spp', 'Jabatan pengaju', 'required');
-
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
@@ -72,8 +78,8 @@ class SPP extends CI_Controller
             $this->load->view('templates/footer', $data);
         } else {
 
+            $this->db->where('id', $id);
             $this->db->update('pdl', [
-
 
                 'nomor_spp' => $this->input->post('nomor_spp'),
                 'disetujui_spp' => $this->input->post('disetujui_spp'),
@@ -81,14 +87,13 @@ class SPP extends CI_Controller
                 'diajukan_spp' => $this->input->post('diajukan_spp'),
                 'jabatan_spp' => $this->input->post('jabatan_spp'),
 
-
             ]);
+
             $namaRombongan = $this->input->post('nama_rombongan');
             $jabatanRombongan = $this->input->post('jabatan_rombongan');
             $golonganRombongan = $this->input->post('golongan_rombongan');
 
             foreach ($namaRombongan as $index => $data) {
-
                 $datas = array(
                     'id_pdl' => $id,
                     'nama_peserta' => $data,
@@ -97,6 +102,26 @@ class SPP extends CI_Controller
                 );
             }
 
+            $tmp = -1;
+            $j = 0;
+
+            for ($i = 0; $i < count($idRombongan); $i++) {
+                $array = array(
+                    'uang_makans' => $biaya[$tmp += 1],
+                    'makan_pagis' => $biaya[$tmp += 1],
+                    'makan_siangs' => $biaya[$tmp += 1],
+                    'makan_malams' => $biaya[$tmp += 1],
+                    'uang_sakus' => $biaya[$tmp += 1],
+                    'uang_cucians' => $biaya[$tmp += 1],
+                    'penginapans' => $biaya[$tmp += 1],
+                );
+                $this->db->set($array);
+                $this->db->where('id', $idRombongan[$j]);
+                $this->db->update('rombongan_peserta');
+                $j++;
+            }
+
+            // if ($this->db->affected_rows() > 0 | $this->SPJ->insertBiaya($idRombongan, $biaya) > 0) {
             if ($this->db->affected_rows() > 0) {
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Your mail has been update!</div>');
             } else {

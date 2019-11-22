@@ -4,8 +4,8 @@
             <td width="48%">
                 <p>Kepada Yth &nbsp; &nbsp; : <strong>Kabag Sekretaris Perusahaan</strong><br>
                     Dari &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : <strong>Urs. Sekretariat</strong><br>
-                    Nomor SPP &nbsp; &nbsp; :&nbsp;<br>
-                    Tanggal &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; :&nbsp;</Dari>
+                    Nomor SPP &nbsp; &nbsp; :&nbsp;<?= $spj['nomor_spp'] ?><br>
+                    Tanggal &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; :&nbsp;<?= date('d-m-Y') ?></p>
             </td>
             <td width="19%">
                 <p>SURAT PERMINTAAN PEMBAYARAN (SPP)</p>
@@ -52,10 +52,10 @@
                 <p>&nbsp;</p>
             </td>
             <td valign="top" width="44.65709728867623%">
-                <p>Biaya Perjalanan Dinas ke&nbsp;</p>
+                <p>Biaya Perjalanan Dinas ke <?= $spj['tujuan'] ?> </p>
                 <p>Sesuai rincian sebagai berikut :</p>
-                <p>Tgl.&nbsp;</p>
-                <p>SPJ No :</p>
+                <p>Tgl. &nbsp;<?= $spj['tanggal_spj'] ?></p>
+                <p>SPJ No : <?= $spj['nomor_spj'] ?></p>
                 <p>&nbsp;</p>
                 <p>Lupsum &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;1 x Rp. &nbsp; &nbsp; X &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Rp. &nbsp;Sekian</p>
                 <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Rp&nbsp;</p>
