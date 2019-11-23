@@ -25,17 +25,17 @@
                         <!--" enctype="multipart/form-data">-->
                         <?php echo form_open_multipart() ?>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="nomor" name="nomor" readonly value="<?= $pdl['nomor'] ?>">
+                            <input type="text" class="form-control" id="nomor" name="nomor" readonly value="<?= $spj['nomor'] ?>">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="tanggal" name="tanggal" readonly value="<?= date("Y-n-d"); ?>">
+                            <input type="text" class="form-control" id="tanggal" name="tanggal" readonly value="<?= $spj['tanggal'] ?>">
                         </div>
                         <div class="form-group">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="tujuan" name="tujuan" readonly value="<?= $pdl['tujuan'] ?>">
+                                <input type="text" class="form-control" id="tujuan" name="tujuan" readonly value="<?= $spj['tujuan'] ?>">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" id="keperluan" name="keperluan" readonly value="<?= $pdl['keperluan'] ?>">
+                                <input type="text" class="form-control" id="keperluan" name="keperluan" readonly value="<?= $spj['keperluan'] ?>">
                             </div>
 
 
@@ -79,51 +79,51 @@
                             <?php endforeach ?>
 
                             <div class="form-group">
-                                <input type="date" class="form-control" id="tanggal_berangkat" readonly name="tanggal_berangkat" value="<?= $pdl['tanggal_berangkat'] ?>">
+                                <input type="date" class="form-control" id="tanggal_berangkat" readonly name="tanggal_berangkat" value="<?= $spj['tanggal_berangkat'] ?>">
                             </div>
                             <div class="form-group">
-                                <input type="date" class="form-control" id="tanggal_kembali" readonly name="tanggal_kembali" value="<?= $pdl['tanggal_kembali'] ?>">
+                                <input type="date" class="form-control" id="tanggal_kembali" readonly name="tanggal_kembali" value="<?= $spj['tanggal_kembali'] ?>">
                             </div>
 
                             <div class="form-group">
                                 <div class="autocomplete">
-                                    <input class=" form-control" id="myInput2" type="text" readonly name="ditujukan_kepada" value="<?= $pdl['ditujukan_kepada'] ?>">
+                                    <input class=" form-control" id="myInput2" type="text" readonly name="ditujukan_kepada" value="<?= $spj['ditujukan_kepada'] ?>">
                                 </div>
                             </div>
 
 
                             <div class="form-group">
-                                <input type="text" class="form-control" id="jabatan_penandatanganan" readonly name="jabatan_penandatanganan" value="<?= $pdl['jabatan_penandatanganan'] ?>">
+                                <input type="text" class="form-control" id="jabatan_penandatanganan" readonly name="jabatan_penandatanganan" value="<?= $spj['jabatan_penandatanganan'] ?>">
                             </div>
 
                             <div class="form-group">
-                                <input type="text" class="form-control" readonly id="nomor_spj" name="nomor_spj" placeholder="Nomor SPJ" value="<?= $pdl['nomor_spj'] ?>">
+                                <input type="text" class="form-control" readonly id="nomor_spj" name="nomor_spj" placeholder="Nomor SPJ" value="<?= $spj['nomor_spj'] ?>">
                             </div>
 
                             <div class="form-group">
-                                <input type="date" class="form-control" readonly id="tanggal_spj" name="tanggal_spj" readonly value="<?= date("Y-n-d"); ?>">
+                                <input type="date" class="form-control" readonly id="tanggal_spj" name="tanggal_spj" readonly value="<?= $spj['tanggal_spj'] ?>">
                             </div>
 
                             <div class="form-group">
-                                <input class="form-control" readonly id="tipe_keperluan" name="tipe_keperluan" placeholder="Tipe Keperlan" value="<?= $pdl['tipe_keperluan'] ?>">
+                                <input class="form-control" readonly id="tipe_keperluan" name="tipe_keperluan" placeholder="Tipe Keperlan" value="<?= $spj['tipe_keperluan'] ?>">
                             </div>
 
                             <div class="form-group">
-                                <input class="form-control" readonly id="jenis_kendaraan" name="jenis_kendaraan" value="<?= $pdl['jenis_kendaraan'] ?>" placeholder="Jenis Kendaraan">
+                                <input class="form-control" readonly id="jenis_kendaraan" name="jenis_kendaraan" value="<?= $spj['jenis_kendaraan'] ?>" placeholder="Jenis Kendaraan">
                             </div>
 
                             <div class="form-group">
-                                <input type="text" readonly class="form-control" id="no_polis" name="no_polis" placeholder="No Polis" value="<?= $pdl['no_polis'] ?>">
+                                <input type="text" readonly class="form-control" id="no_polis" name="no_polis" placeholder="No Polis" value="<?= $spj['no_polis'] ?>">
                             </div>
                             <div class="form-group">
-                                <input type="text" readonly class="form-control" id="pengemudi" name="pengemudi" placeholder="Pengemudi" value="<?= $pdl['pengemudi'] ?>">
+                                <input type="text" readonly class="form-control" id="pengemudi" name="pengemudi" placeholder="Pengemudi" value="<?= $spj['pengemudi'] ?>">
                             </div>
                             <div class="form-group">
-                                <input type="text" readonly class="form-control" id="ditanggung_perusahaan" name="ditanggung_perusahaan" placeholder="Ditanggung Perusahaan" value="<?= $pdl['ditanggung_perusahaan'] ?>">
+                                <input type="text" readonly class="form-control" id="ditanggung_perusahaan" name="ditanggung_perusahaan" placeholder="Ditanggung Perusahaan" value="<?= $spj['ditanggung_perusahaan'] ?>">
                             </div>
 
                             <div class="form-group">
-                                <input type="text" readonly class="form-control" id="lain_lain" name="lain_lain" placeholder="Lain-Lain" value="<?= $pdl['lain_lain'] ?>">
+                                <input type="text" readonly class="form-control" id="lain_lain" name="lain_lain" placeholder="Lain-Lain" value="<?= $spj['lain_lain'] ?>">
                             </div>
 
 

@@ -67,19 +67,20 @@ class Spj_model extends CI_Model
         $query = "SELECT * FROM pdl WHERE status = 4 ";
         return $this->db->query($query)->result_array();
     }
-    public function getspp()
+    public function getspp($limit, $start)
     {
-        $query = "SELECT * FROM pdl WHERE status = 7 ";
-        return $this->db->query($query)->result_array();
+        $query = $this->db->get_where('pdl', array('status' => 7), $limit, $start);
+        // $query = "SELECT * FROM pdl WHERE status = 7 ";
+        return $query->result_array();
     }
     public function getspjdireksisee()
     {
         $query = "SELECT * FROM pdl WHERE status = 4 ";
         return $this->db->query($query)->row_array();
     }
-    public function getspjsee()
+    public function getspjsee($id)
     {
-        $query = "SELECT * FROM pdl";
+        $query = "SELECT * FROM pdl WHERE id=$id";
         return $this->db->query($query)->row_array();
     }
     public function insertBiaya($idRombongan, $data)

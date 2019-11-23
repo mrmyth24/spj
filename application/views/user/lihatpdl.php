@@ -31,7 +31,7 @@
                             <input type="text" class="form-control" id="nomor" name="nomor" readonly value="<?= $pdl['nomor'] ?>">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="tanggal" name="tanggal" readonly value="<?= date("Y-n-d"); ?>">
+                            <input type="text" class="form-control" id="tanggal" name="tanggal" readonly value="<?= $pdl['tanggal'] ?>">
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" id="tujuan" name="tujuan" readonly value="<?= $pdl['tujuan'] ?>">

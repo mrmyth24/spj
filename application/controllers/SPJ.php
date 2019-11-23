@@ -90,7 +90,7 @@ class SPJ extends CI_Controller
             $this->load->view('SPJ/addmail', $data);
             $this->load->view('templates/footer', $data);
         } else {
-
+            $this->db->where('id', $id);
             $this->db->update('pdl', [
 
                 'nomor' => $this->input->post('nomor'),

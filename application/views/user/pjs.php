@@ -27,6 +27,7 @@
                 </thead>
                 <tbody>
                     <?php $i = 1; ?>
+                    <?php $j = 0; ?>
                     <?php foreach ($pdl as $p) : ?>
                         <tr>
                             <th scope="row"><?= $i; ?></th>
@@ -38,18 +39,18 @@
                             <td><?= $p['tanggal_kembali'] ?></td>
                             <td><?= $p['ditujukan_kepada'] ?></td>
 
-                            <td> <a href="<?= base_url('User/lihatpdl/' . $id[0]['id']); ?>" class=" btn btn-success btn-circle">Lihat</a>
+                            <td> <a href="<?= base_url('User/lihatpdl/' . $id[$j]['id']); ?>" class=" btn btn-success btn-circle">Lihat</a>
                             </td>
-
                             <td>
-                                <a href="<?= base_url('User/pdlkabag/' . $id[0]['id']); ?>" class=" btn btn-success btn-circle">
+                                <a href="<?= base_url('User/pdlkabag/' . $id[$j]['id']); ?>" class=" btn btn-success btn-circle">
                                     <i class="fas fa-fw fa-check"></i></a>
-                                <a href="<?= base_url('User/pdltolakpjs/' . $id[0]['id']); ?>" class=" btn btn-danger btn-circle">
+                                <a href="<?= base_url('User/pdltolakpjs/' . $id[$j]['id']); ?>" class=" btn btn-danger btn-circle">
                                     <i class="fas fa-fw fa-times-circle"></i></a>
                             </td>
 
                         </tr>
                         <?php $i++; ?>
+                        <?php $j++; ?>
                     <?php endforeach; ?>
                 </tbody>
             </table>

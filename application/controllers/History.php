@@ -44,12 +44,16 @@ class History extends CI_Controller
                 $file = $this->upload->data('file_name');
             }
 
+            $id = $this->input->post('id_tujuan');
+            // var_dump($id);
+            // die;
+
             $datas = array(
                 'bukti' => $file,
                 'status' => '6'
             );
 
-            $this->db->where('id', $data['spj'][0]['id_pdl']);
+            $this->db->where('id', $id);
             $this->db->update('pdl', $datas);
 
             // var_dump($_POST['submit']);
@@ -60,13 +64,13 @@ class History extends CI_Controller
             redirect('history');
         }
     }
-    public function lihatpdl($id)
+    public function lihatspj($id)
     {
         $data['title'] = 'Lihat Surat';
 
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-        $data['pdl'] = $this->SPJ->getspjsee();
+        $data['spj'] = $this->SPJ->getspjsee($id);
         $data['pdl_rombongan'] = $this->PDL->getRombongan($id);
 
         // var_dump($data['pdl_rombongan']);

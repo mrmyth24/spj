@@ -48,6 +48,13 @@
         </div>
     </div>
 
+    <div class="row mt-3">
+        <div class="col">
+            <!--Tampilkan pagination-->
+            <?php echo $pagination; ?>
+        </div>
+    </div>
+
 </div>
 <!-- /.container-fluid -->
 

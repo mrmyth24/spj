@@ -149,7 +149,7 @@ class User extends CI_Controller
 
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-		$data['pdl'] = $this->PDL->getpdlsee();
+		$data['pdl'] = $this->PDL->getpdlsee($id);
 		$data['pdl_rombongan'] = $this->PDL->getRombongan($id);
 
 		$this->load->view('templates/header', $data);

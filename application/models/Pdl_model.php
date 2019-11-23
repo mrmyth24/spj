@@ -15,7 +15,7 @@ class Pdl_model extends CI_Model
     }
     public function getpdlbyname($nama)
     {
-        $query = "SELECT * FROM `pdl` LEFT JOIN `rombongan_peserta` ON pdl.id = rombongan_peserta.id_pdl WHERE rombongan_peserta.nama_peserta = '$nama'";
+        $query = "SELECT * FROM `pdl` LEFT JOIN `rombongan_peserta` ON pdl.id = rombongan_peserta.id_pdl WHERE rombongan_peserta.nama_peserta = '$nama' ORDER BY tanggal";
         // $query = "SELECT * FROM `pdl` LEFT JOIN `rombongan_peserta` ON pdl.id = rombongan_peserta.id_pdl WHERE pdl.nama = '$nama'";
         return $this->db->query($query)->result_array();
     }
@@ -43,15 +43,15 @@ class Pdl_model extends CI_Model
     }
 
 
-    public function getpdlseedirut()
+    public function getpdlseedirut($id)
     {
-        $query = "SELECT * FROM pdl WHERE status = 2 ";
+        $query = "SELECT * FROM pdl WHERE status = 2 AND id=$id ";
         return $this->db->query($query)->row_array();
     }
 
-    public function getpdlsee()
+    public function getpdlsee($id)
     {
-        $query = "SELECT * FROM pdl WHERE status = 1 ";
+        $query = "SELECT * FROM pdl WHERE status = 1 AND id = $id ";
         return $this->db->query($query)->row_array();
     }
 

@@ -59,7 +59,7 @@
                             </td>
 
                             <td>
-                                <a href="<?= base_url('History/lihatpdl/' . $s['id_pdl']); ?>" class="btn btn-info btn-circle">Detail</a>
+                                <a href="<?= base_url('History/lihatspj/' . $s['id_pdl']); ?>" class="btn btn-info btn-circle">Detail</a>
                             </td>
 
                             <td>
@@ -71,8 +71,9 @@
                                             <input type="file" class="custom-file-input" id="bukti" name="bukti" required>
                                             <label class="custom-file-label" for="bukti">Bukti Berbentuk pdf</label>
                                         </div>
+                                        <input type="hidden" name="id_tujuan" value="<?= $s['id_pdl'] ?>">
                                     </div>
-                                    <button name='submit' type="submit" class="btn btn-primary">Add</button>
+                                    <button name='submit' type=" submit" class="btn btn-primary">Add</button>
                                     <?php echo form_close() ?>
 
                                 <?php elseif ($s['status'] == '6') : ?>
