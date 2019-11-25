@@ -69,7 +69,16 @@ class Spj_model extends CI_Model
     }
     public function getspp($limit, $start)
     {
-        $query = $this->db->get_where('pdl', array('status' => 7), $limit, $start);
+        // $query = $this->db->get_where('pdl', array('status' => 7), $limit, $start);
+        // $hasil = $this->db->query("SELECT * FROM `rombongan_peserta` LEFT JOIN `pdl` ON rombongan_peserta.id_pdl = pdl.id WHERE pdl.status = 7");
+
+        $this->db->select('*');
+        $this->db->from('rombongan_peserta');
+        $this->db->join('pdl', 'rombongan_peserta.id_pdl = pdl.id');
+        $this->db->where('pdl.status', 7);
+        $this->db->limit($limit, $start);
+
+        $query = $this->db->get();
         // $query = "SELECT * FROM pdl WHERE status = 7 ";
         return $query->result_array();
     }

@@ -99,26 +99,27 @@ if ($karyawan != null) {
                                 <input class="form-control" type="text" id="<?php echo ($i == 1 ? 'jabatan_rombongan' : 'jabatanRombongan' . $i) ?>" name="jabatan_rombongan[]" placeholder="Jabatan Rombongan" readonly value="<?= $dataRombongan['jabatan_rombongan'] ?>">
                             </div>
                             <div class="form-group">
-                                <input class="form-control" type="text" name="biaya[]" readonly value="<?= $dataRombongan['uang_makan'] ?>">
+                                <input class="form-control" type="hidden" name="biaya[]" readonly value="<?= $dataRombongan['uang_makan'] ?>">
                             </div>
                             <div class="form-group">
-                                <input class="form-control" type="text" name="biaya[]" readonly value="<?= $dataRombongan['makan_pagi'] ?>">
+                                <input class="form-control" type="hidden" name="biaya[]" readonly value="<?= $dataRombongan['makan_pagi'] ?>">
                             </div>
                             <div class="form-group">
-                                <input class="form-control" type="text" name="biaya[]" readonly value="<?= $dataRombongan['makan_siang'] ?>">
+                                <input class="form-control" type="hidden" name="biaya[]" readonly value="<?= $dataRombongan['makan_siang'] ?>">
                             </div>
                             <div class="form-group">
-                                <input class="form-control" type="text" name="biaya[]" readonly value="<?= $dataRombongan['makan_malam'] ?>">
+                                <input class="form-control" type="hidden" name="biaya[]" readonly value="<?= $dataRombongan['makan_malam'] ?>">
                             </div>
                             <div class="form-group">
-                                <input class="form-control" type="text" name="biaya[]" readonly value="<?= $dataRombongan['uang_saku'] ?>">
+                                <input class="form-control" type="hidden" name="biaya[]" readonly value="<?= $dataRombongan['uang_saku'] ?>">
                             </div>
                             <div class="form-group">
-                                <input class="form-control" type="text" name="biaya[]" readonly value="<?= $dataRombongan['uang_cucian'] ?>">
+                                <input class="form-control" type="hidden" name="biaya[]" readonly value="<?= $dataRombongan['uang_cucian'] ?>">
                             </div>
                             <div class="form-group">
-                                <input class="form-control" type="text" name="biaya[]" readonly value="<?= $dataRombongan['penginapan'] ?>">
+                                <input class="form-control" type="hidden" name="biaya[]" readonly value="<?= $dataRombongan['penginapan'] ?>">
                             </div>
+
                             <div class="form-group">
                                 <input class="form-control" type="text" id="golonganRombongan<?php echo ($i >= 2 ?  $i : null) ?>" name="golongan_rombongan[]" placeholder="Golongan Rombongan" readonly value="<?= $dataRombongan['golongan_rombongan'] ?>">
                             </div>

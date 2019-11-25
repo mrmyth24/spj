@@ -3,6 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class SPP extends CI_Controller
 {
+
     public function __construct()
     {
         parent::__construct();
@@ -44,7 +45,11 @@ class SPP extends CI_Controller
 
         $data['title'] = 'SPP';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+
         $data['pdl'] = $this->SPJ->getspp($config['per_page'], $data['page']);
+
+
         $data['pagination'] = $this->pagination->create_links();
 
         $this->load->view('templates/header', $data);
@@ -88,6 +93,7 @@ class SPP extends CI_Controller
 
         $idRombongan = array();
 
+
         foreach ($data['pdl_rombongan'] as $dataRombongan) {
             array_push($idRombongan, $dataRombongan['id']);
         }
@@ -121,17 +127,21 @@ class SPP extends CI_Controller
             $jabatanRombongan = $this->input->post('jabatan_rombongan');
             $golonganRombongan = $this->input->post('golongan_rombongan');
 
-            foreach ($namaRombongan as $index => $data) {
+            foreach ($namaRombongan as $index => $tmpData) {
                 $datas = array(
                     'id_pdl' => $id,
-                    'nama_peserta' => $data,
+                    'nama_peserta' => $tmpData,
                     'jabatan_rombongan' => $jabatanRombongan[$index],
                     'golongan_rombongan' => $golonganRombongan[$index]
                 );
             }
 
+
             $tmp = -1;
+            $tmp2 = -1;
+            $tmp3 = 0;
             $j = 0;
+            $k = 0;
 
             for ($i = 0; $i < count($idRombongan); $i++) {
                 $array = array(
@@ -143,11 +153,75 @@ class SPP extends CI_Controller
                     'uang_cucians' => $biaya[$tmp += 1],
                     'penginapans' => $biaya[$tmp += 1],
                 );
+                // foreach ($array as $a) {
+                //     echo 'Total = ' . $tmp2 += $a;
+                // }
                 $this->db->set($array);
                 $this->db->where('id', $idRombongan[$j]);
                 $this->db->update('rombongan_peserta');
                 $j++;
             }
+            foreach ($data['spj'] as $p) {
+
+                $date1 = strtotime($p['tanggal_berangkat']);
+                $date2 = strtotime($p['tanggal_kembali']);
+                if ($date1 > $date2) {
+                    $days = 0;
+                    $denda = 0;
+                } else {
+
+
+                    // Formulate the Difference between two dates
+                    $diff = abs($date2 - $date1);
+                    // To get the year divide the resultant date into
+                    // total seconds in a year (365*60*60*24)
+                    $years = floor($diff / (365 * 60 * 60 * 24));
+                    // To get the month, subtract it with years and
+                    // divide the resultant date into
+                    // total seconds in a month (30*60*60*24)
+                    $months = floor(($diff - $years * 365 * 60 * 60 * 24)
+                        / (30 * 60 * 60 * 24));
+                    // To get the day, subtract it with years and
+                    // months and divide the resultant date into
+                    // total seconds in a days (60*60*24)
+                    $days = floor(($diff - $years * 365 * 60 * 60 * 24 -
+                        $months * 30 * 60 * 60 * 24) / (60 * 60 * 24));
+                    $denda = (int) $days;
+                }
+            }
+
+
+            for ($i = 0; $i < count($idRombongan); $i++) {
+                $query =  $this->db->get_where('rombongan_peserta', array('id' => $idRombongan[$k]));
+                $dataUangRombongan = $query->result_array();
+
+                if ($data['spj'][0]['jenis_perjalanan'] == 'Luar Daerah') {
+                    $uangMakan = $dataUangRombongan[0]['uang_makans'];
+                    $penginapan = $dataUangRombongan[0]['penginapans'];
+                    $uangCucian = $dataUangRombongan[0]['uang_cucians'];
+                    $uangSaku = $dataUangRombongan[0]['uang_sakus'];
+                    $tmpTotal =  $uangMakan + $penginapan + $uangCucian + $uangSaku;
+                } else if ($data['spj'][0]['jenis_perjalanan'] == 'Dalam Daerah Dalam Mes') {
+
+                    $makanPagi = $dataUangRombongan[0]['makan_pagis'];
+                    $makanMalam = $dataUangRombongan[0]['makan_malams'];
+                    $uangSaku = $dataUangRombongan[0]['uang_sakus'];
+                    $tmpTotal =  $makanPagi + $makanMalam  + ($uangSaku * $denda);
+                } else {
+                    $makanPagi = $dataUangRombongan[0]['makan_pagis'];
+                    $makanSiang = $dataUangRombongan[0]['makan_siangs'];
+                    $makanMalam = $dataUangRombongan[0]['makan_malams'];
+                    $uangSaku = $dataUangRombongan[0]['uang_sakus'];
+                    $tmpTotal = ($makanPagi + $makanMalam  + $uangSaku) * $denda;
+                }
+
+                $this->db->set('total', $tmpTotal);
+                $this->db->where('id', $idRombongan[$k]);
+                $this->db->update('rombongan_peserta');
+                $k++;
+            }
+
+            // die;
 
             // if ($this->db->affected_rows() > 0 | $this->SPJ->insertBiaya($idRombongan, $biaya) > 0) {
             if ($this->db->affected_rows() > 0) {
