@@ -75,16 +75,23 @@ if ($karyawan != null) {
 
                         </div> -->
 
-                        <?php $i = 1;
+                        <div class="form-group">
+                            <button class="btn btn-primary add_field_button">Tambah Rombongan</button>
+                        </div>
+
+                        <?php
+                        $i = 1;
                         $j = 1;
                         foreach ($pdl_rombongan as $dataRombongan) : ?>
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-5">
-                                        <input type="text" readonly class="form-control form tambahForm" id="<?php echo ($i == 1 ? 'nama_rombongan' : 'tambahForm' . $i) ?>" placeholder="Cari Nama Rombongan">
+                                        <!-- id="<?php //echo ($i == 1 ? 'nama_rombongan' : 'tambahForm' . $i) 
+                                                        ?>" -->
+                                        <input type="text" readonly class="form-control form tambahForm" placeholder="Cari Nama Rombongan">
                                     </div>
                                     <div class="col">
-                                        <select id="show-list<?php echo ($i >= 2 ?  $i : null) ?>" class="form-control show-list" name="nama_rombongan[]">
+                                        <select id="show-list<?php echo ($i >= 2 ?  $i : null) ?>" class="form-control show-list" name="nama_rombongan[]" disabled>
                                             <option><?= $dataRombongan['nama_peserta'] ?></option>
                                         </select>
                                     </div>
@@ -102,7 +109,16 @@ if ($karyawan != null) {
                             <?php $i++ ?>
                         <?php endforeach ?>
 
+                        <div class="col" id="insert-form">
+                            <input type="hidden" id="id_pdl" value="<?= $spj['id'] ?>">
+                        </div>
 
+                        <div class="col" id="insert-form">
+                            <input type="hidden" id="jumlah-form" value="<?= $i - 1 ?>">
+                        </div>
+
+                        <div class="input_fields_wrap form-group">
+                        </div>
 
 
                         <div class="form-group">

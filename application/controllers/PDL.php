@@ -4,6 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class PDL extends CI_Controller
 {
 
+    public static $idEditmail = 0;
     public function __construct()
     {
         parent::__construct();
@@ -48,11 +49,16 @@ class PDL extends CI_Controller
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Failed to delete your mail!</div>');
         }
-        redirect('PDL/index');
+        redirect('PDL/editmail/' . $this->session->userdata('id'));
     }
 
     public function editmail($id)
     {
+        $dataId = [
+            'id' => $id
+        ];
+        $this->session->set_userdata($dataId);
+
         $data['title'] = 'PDL';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['pdl'] = $this->PDL->getdetailpdl($id);
@@ -102,8 +108,6 @@ class PDL extends CI_Controller
             $namaRombongan = $this->input->post('nama_rombongan');
             $jabatanRombongan = $this->input->post('jabatan_rombongan');
             $golonganRombongan = $this->input->post('golongan_rombongan');
-
-
 
             if ($this->db->affected_rows() > 0) {
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Your mail has been update!</div>');

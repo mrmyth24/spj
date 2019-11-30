@@ -54,8 +54,6 @@ class SPJ extends CI_Controller
         readfile($filename);
     }
 
-
-
     public function addmail($id)
     {
 
@@ -193,5 +191,26 @@ class SPJ extends CI_Controller
 
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> SPJ Sudah Di ACC!</div>');
         redirect('SPJ');
+    }
+
+    public function search()
+    {
+        $text = $this->input->get('t');
+        $searchText = $this->input->post('query');
+        $query = "SELECT * FROM karyawan WHERE nama LIKE '$searchText%'";
+        $result = $this->db->query($query);
+
+        // var_dump($result->result_array());
+        // die();
+
+        if ($result->num_rows() > 0) {
+            $row['isi'] = $result->result_array();
+            foreach ($row['isi'] as $nama) {
+                echo "<option>" . $nama['nama'] . "</option>";
+            }
+            echo '<br/>';
+        } else {
+            echo "null";
+        }
     }
 }

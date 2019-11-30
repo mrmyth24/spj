@@ -56,10 +56,12 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-5">
-                                        <input type="text" class="form-control form tambahForm" id="<?php echo ($i == 1 ? 'nama_rombongan' : 'tambahForm' . $i) ?>" placeholder="Cari Nama Rombongan">
+                                        <!-- id="<?php //echo ($i == 1 ? 'nama_rombongan' : 'tambahForm' . $i) 
+                                                        ?>" -->
+                                        <input type="text" class="form-control form tambahForm" placeholder="Cari Nama Rombongan" readonly>
                                     </div>
                                     <div class="col">
-                                        <select id="show-list<?php echo ($i >= 2 ?  $i : null) ?>" class="form-control show-list" name="nama_rombongan[]">
+                                        <select id="show-list<?php echo ($i >= 2 ?  $i : null) ?>" class="form-control show-list" name="nama_rombongan[]" disabled>
                                             <option><?= $dataRombongan['nama_peserta'] ?></option>
                                         </select>
                                     </div>
@@ -69,8 +71,8 @@
                                 <input class="form-control" type="text" id="<?php echo ($i == 1 ? 'jabatan_rombongan' : 'jabatanRombongan' . $i) ?>" name="jabatan_rombongan[]" placeholder="Jabatan Rombongan" readonly value="<?= $dataRombongan['jabatan_rombongan'] ?>">
                             </div>
                             <div class="form-group">
-                                <input class="form-control" type="text" id="golonganRombongan<?php echo ($i >= 2 ?  $i : null) ?>" name="golongan_rombongan[]" placeholder="Golongan Rombongan" readonly value="<?= $dataRombongan['golongan_rombongan'] ?>">
-                                <a href="<?= base_url('PDL/deleterombongan/' . $dataRombongan['id']); ?>" class="badge badge-danger" onclick="return confirm('Yakin Hapus?')">delete Rombongan</a>
+                                <input class="form-control" type="text" id="<?php echo ($i == 1 ? 'golongan_rombongan' : 'golonganRombongan' . $i) ?>" name="golongan_rombongan[]" placeholder="Golongan Rombongan" readonly value="<?= $dataRombongan['golongan_rombongan'] ?>">
+                                <a href="<?= base_url('PDL/deleterombongan/' . $dataRombongan['id']); ?>" class="badge badge-danger deleteRombongan" onclick="return confirm('Yakin Hapus?')">delete Rombongan</a>
                             </div>
                             <div class="col" id="insert-form"></div>
 
@@ -82,7 +84,7 @@
                         </div>
 
                         <div class="col" id="insert-form">
-                            <input type="hidden" id="jumlah-form" value="<?= $i ?>">
+                            <input type="hidden" id="jumlah-form" value="<?= $i - 1 ?>">
                         </div>
 
                         <div class="input_fields_wrap form-group">

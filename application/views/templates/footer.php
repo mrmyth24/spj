@@ -49,8 +49,8 @@
 <!-- Custom scripts for all pages-->
 <script src="<?= base_url('assets'); ?>/js/sb-admin-2.min.js"></script>
 
-<script src="<?= base_url(); ?>assets/js/js-sweetalert/sweetalert2.all.min.js" ></script>
-<script src="<?= base_url(); ?>assets/js/js-sweetalert/myscript.js" ></script>
+<script src="<?= base_url(); ?>assets/js/js-sweetalert/sweetalert2.all.min.js"></script>
+<script src="<?= base_url(); ?>assets/js/js-sweetalert/myscript.js"></script>
 
 
 
@@ -176,7 +176,7 @@
 				x++; //text box increment
 
 
-				$(wrapper).append('<div><div class="form-group"><div class="row"><div class="col-5"><input id="tambahForm' + nextform + '" class="form-control tambahForm mt-2" type="text" class="form tambahForm"  placeholder="Cari Nama Rombongan"></div><div class="col mt-2"><select id="show-list' + nextform + '" class="show-list form-control" name="nama_rombongan[]"><option>Tidak ada data</option></select></div></div></div><div class="form-group"><input id="jabatanRombongan' + nextform + '" type="text" class="form-control" placeholder="Jabatan Rombongan" name="jabatan_rombongan[]" readonly></div><div class="form-group"><input id="golonganRombongan' + nextform + '" type="text" placeholder="Golongan Rombongan" class="form-control" name="golongan_rombongan[]" readonly></div><a href="#" class="remove_field ml-1" style="color:red; font-size:14px">Hapus Rombongan</a><a id="submitRombongan' + nextform + '" class="submitRombongan" href="#" style="color:blue; font-size:14px">Submit</a></div>'); //add input box
+				$(wrapper).append('<div><div class="form-group"><div class="row"><div class="col-5"><input id="tambahForm' + nextform + '" class="form-control tambahForm mt-2" type="text" class="form tambahForm"  placeholder="Cari Nama Rombongan"></div><div class="col mt-2"><select id="show-list' + nextform + '" class="show-list form-control" name="nama_rombongan[]"><option>Tidak ada data</option></select></div></div></div><div class="form-group"><input id="jabatanRombongan' + nextform + '" type="text" class="form-control" placeholder="Jabatan Rombongan" name="jabatan_rombongan[]" readonly></div><div class="form-group"><input id="golonganRombongan' + nextform + '" type="text" placeholder="Golongan Rombongan" class="form-control" name="golongan_rombongan[]" readonly></div><a href="#" class="remove_field ml-1" style="color:red; font-size:14px">Hapus Rombongan</a><a id="submitRombongan' + nextform + '" class="submitRombongan" href="<?= base_url('PDL/editmail/') . $this->uri->segment(3); ?>" style="color:blue; font-size:14px">Submit</a></div>'); //add input box
 
 			}
 
@@ -255,7 +255,7 @@
 		$('#nama_rombongan').click(function() {
 			$('#show-list').html('<option>Data tidak ditemukan</option>');
 			$('#jabatan_rombongan').val('');
-			$('#golonganRombongan').val('');
+			$('#golongan_rombongan').val('');
 		});
 
 		$('#nama').click(function() {
@@ -346,7 +346,7 @@
 		$(document).on('keyup', '.tambahForm', function() {
 			var jumlah = parseInt($("#jumlah-form").val()); // Ambil jumlah data form pada textbox jumlah-form
 			var nextform = jumlah + 1;
-			var id = this.id
+			var id = this.id;
 			// autocomplete(document.getElementById(id), count);
 			lakukanAjaxCariNama(id, jumlah);
 		});
@@ -366,8 +366,36 @@
 			var id = this.id
 			// autocomplete(document.getElementById(id), count);
 			lakukanAjaxInsertDataRombongan(id, jumlah);
-
 		});
+
+
+		$('#kodeunit').hide();
+		$('#tanggal').hide();
+		$('#tanggal').removeAttr('required');
+		$('#tanggal2').hide();
+		$('#tanggal2').removeAttr('required');
+
+		$("#kategori").click(function() {
+			var teks = $('#kategori option:selected').val();
+			if (teks == 'Nama Rombongan') {
+				$('#kodeunit').hide();
+				$('#tanggal').hide();
+				$('#tanggal').removeAttr('required');
+				$('#tanggal2').hide();
+				$('#tanggal2').removeAttr('required');
+				$('#keyword').show();
+				$('#keyword').prop('required', true);
+			} else {
+				$('#kodeunit').show();
+				$('#tanggal').show();
+				$('#tanggal').prop('required', true);
+				$('#tanggal2').show();
+				$('#tanggal2').prop('required', true);
+				$('#keyword').hide();
+				$('#keyword').removeAttr('required');
+			}
+		});
+
 	});
 
 	function lakukanAjaxInsertDataRombongan(element, number) {
@@ -392,15 +420,14 @@
 
 	}
 
-	// autocomplete data rombongan
-
-
 	// autocomplete nama rombongan
 	function lakukanAjaxCariNama(element, number) {
 		var searchText = $("#tambahForm" + number).val();
+		console.log(element);
+		console.log(searchText);
 		if (searchText != '') {
 			$.ajax({
-				url: "<?= base_url('pdl/search'); ?>",
+				url: "<?php echo ($this->uri->segment(1) == 'PDL') ? base_url('pdl/search') : base_url('spj/search') ?>",
 				method: 'post',
 				data: {
 					query: searchText

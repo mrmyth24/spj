@@ -4,6 +4,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class SPP extends CI_Controller
 {
 
+    public $dataSpj;
+
     public function __construct()
     {
         parent::__construct();
@@ -231,5 +233,92 @@ class SPP extends CI_Controller
             }
             redirect('SPP');
         }
+    }
+
+    public function cariRombongan()
+    {
+        $kategori = $this->input->post('kategori');
+        $kodeunit = $this->input->post('kodeunit');
+        $tanggal = $this->input->post('tanggal');
+        $tanggal2 = $this->input->post('tanggal2');
+        $keyword = $this->input->post('keyword');
+
+        // echo $kategori;
+        // echo $kodeunit;
+        // echo $keyword;
+        // die;
+
+        if ($kategori == 'Nama Rombongan') {
+            // $query = "SELECT * FROM rombongan_peserta WHERE rombongan_peserta.nama_peserta = $keyword";
+
+            $query = 'SELECT * FROM rombongan_peserta JOIN pdl ON rombongan_peserta.id_pdl = pdl.id WHERE rombongan_peserta.nama_peserta = "' . $keyword . '"';
+            $data['pdl'] = $this->db->query($query)->result_array();
+            $this->dataSpj = $data['pdl'];
+
+            $this->session->set_userdata(array('kategori' => $kategori));
+
+            // var_dump($this->dataSpj);
+            // die;
+
+            /*
+             $tmp = $this->db->get_where('rombongan_peserta', array('nama_peserta' => $keyword));
+             $data['pdl'] = $tmp->result_array();
+
+            else if ($kategori == 'Tanggal') {
+                $this->db->SELECT('*');
+                $this->db->FROM('pdl');
+                $this->db->JOIN('rombongan_peserta', 'pdl.id = rombongan_peserta.id_pdl', 'left');
+                $this->db->where('pdl.tanggal_spj', $keyword);
+                $data['pdl'] =  $this->db->get()->result_array();
+            } 
+
+            */
+        } else {
+            /*
+            $query = 'SELECT * 
+                        FROM rombongan_peserta
+                        JOIN pdl 
+                        ON rombongan_peserta.id_pdl = pdl.id 
+                        JOIN karyawan 
+                        ON rombongan_peserta.nama_peserta = karyawan.nama 
+                        AND rombongan_peserta.jabatan_rombongan = karyawan.jabatan 
+                        WHERE karyawan.kode_unit = "' . $kodeunit . '"' . ' AND pdl.tanggal_spj = "' . $kodeunit . '"';
+            */
+            $query = "SELECT *
+                        FROM pdl 
+                        JOIN rombongan_peserta 
+                        ON pdl.id = rombongan_peserta.id_pdl 
+                        JOIN karyawan 
+                        ON rombongan_peserta.nama_peserta = karyawan.nama 
+                        AND rombongan_peserta.jabatan_rombongan = karyawan.jabatan 
+                        WHERE tanggal_spj >= DATE('$tanggal') AND tanggal_spj <= DATE('$tanggal2') AND karyawan.kode_unit = '$kodeunit'";
+            $data['pdl'] = $this->db->query($query)->result_array();
+            $this->dataSpj = $data['pdl'];
+
+            $this->session->set_userdata(array('kategori' => $kategori));
+        }
+
+        $data['title'] = 'SPP';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('spp/index', $data);
+        $this->load->view('templates/footer', $data);
+    }
+
+    public function cetakRekap()
+    {
+        $data['pdl'] = $this->session->all_userdata();
+
+        var_dump($data['pdl']);
+        die;
+
+        $this->load->library('pdf');
+
+        $this->pdf->setPaper('A4', 'landscape');
+        $this->pdf->filename = "Rekap SPJ_" . date('dmY') . " .pdf";
+        $this->pdf->load_view('spp/rekap', $data);
     }
 }
