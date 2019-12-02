@@ -253,9 +253,9 @@ class SPP extends CI_Controller
 
             $query = 'SELECT * FROM rombongan_peserta JOIN pdl ON rombongan_peserta.id_pdl = pdl.id WHERE rombongan_peserta.nama_peserta = "' . $keyword . '"';
             $data['pdl'] = $this->db->query($query)->result_array();
-            $this->dataSpj = $data['pdl'];
 
             $this->session->set_userdata(array('kategori' => $kategori));
+            $this->session->set_userdata(array('keyword' => $keyword));
 
             // var_dump($this->dataSpj);
             // die;
@@ -293,9 +293,11 @@ class SPP extends CI_Controller
                         AND rombongan_peserta.jabatan_rombongan = karyawan.jabatan 
                         WHERE tanggal_spj >= DATE('$tanggal') AND tanggal_spj <= DATE('$tanggal2') AND karyawan.kode_unit = '$kodeunit'";
             $data['pdl'] = $this->db->query($query)->result_array();
-            $this->dataSpj = $data['pdl'];
 
             $this->session->set_userdata(array('kategori' => $kategori));
+            $this->session->set_userdata(array('tanggal' => $tanggal));
+            $this->session->set_userdata(array('tanggal2' => $tanggal2));
+            $this->session->set_userdata(array('kodeunit' => $kodeunit));
         }
 
         $data['title'] = 'SPP';
@@ -310,10 +312,26 @@ class SPP extends CI_Controller
 
     public function cetakRekap()
     {
-        $data['pdl'] = $this->session->all_userdata();
+        $kategori = $this->session->userdata('kategori');
+        $kodeunit = $this->session->userdata('kodeunit') != null ? $this->session->userdata('kodeunit') : null;
+        $tanggal = $this->session->userdata('tanggal') != null ? $this->session->userdata('tanggal') : null;
+        $tanggal2 = $this->session->userdata('tanggal2') != null ? $this->session->userdata('tanggal2') : null;
+        $keyword = $this->session->userdata('keyword') != null ? $this->session->userdata('keyword') : null;
 
-        var_dump($data['pdl']);
-        die;
+        if ($kategori == 'Nama Rombongan') {
+            $query = 'SELECT * FROM rombongan_peserta JOIN pdl ON rombongan_peserta.id_pdl = pdl.id WHERE rombongan_peserta.nama_peserta = "' . $keyword . '"';
+            $data['pdl'] = $this->db->query($query)->result_array();
+        } else {
+            $query = "SELECT *
+                        FROM pdl 
+                        JOIN rombongan_peserta 
+                        ON pdl.id = rombongan_peserta.id_pdl 
+                        JOIN karyawan 
+                        ON rombongan_peserta.nama_peserta = karyawan.nama 
+                        AND rombongan_peserta.jabatan_rombongan = karyawan.jabatan 
+                        WHERE tanggal_spj >= DATE('$tanggal') AND tanggal_spj <= DATE('$tanggal2') AND karyawan.kode_unit = '$kodeunit'";
+            $data['pdl'] = $this->db->query($query)->result_array();
+        }
 
         $this->load->library('pdf');
 
